@@ -3,407 +3,278 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Funky Freshe — @funkyfreshe</title>
-<meta name="description" content="Funky Freshe. The official home of @funkyfreshe on Instagram. Funky finds, fresh energy." />
-<meta property="og:title" content="Funky Freshe" />
-<meta property="og:description" content="The official home of @funkyfreshe on Instagram." />
+<title>Funky Fresh Earrings Co. — handmade in Cincinnati</title>
+<meta name="description" content="Funky Fresh Earrings Co. Handmade shrinky-dink & clay earrings and watch purses, made in Cincinnati by Samantha Neeb. Find us at the Cincinnati City Flea and Cornell Creators Market." />
+<meta property="og:title" content="Funky Fresh Earrings Co." />
+<meta property="og:description" content="Handmade earrings & watch purses, made in Cincinnati. Funky finds, fresh energy." />
 <meta property="og:type" content="website" />
+<meta property="og:image" content="images/booth-music-hall.jpg" />
 <link rel="icon" type="image/svg+xml" href="logo.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Jost:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink: #121212;
-    --muted: rgba(18, 18, 18, .65);
-    --line: rgba(18, 18, 18, .08);
-    --bg: #FFFFFF;
-    --ph-bg: #F3F3F3;
-    --ph-fg: #C9C9C9;
-    --pink: #FF4FA3;
-    --grape: #7A3FF2;
-    --lime: #B8E14A;
-    --header-h: 270px;
-    --drawer-w: 400px;
+    --cream: #F4EDE1;
+    --paper: #FBF7EF;
+    --ink: #2A2420;
+    --muted: #756A5E;
+    --line: rgba(42, 36, 32, .14);
+    --tan: #B58A5C;      /* date numbers, kickers */
+    --terra: #B66A4C;    /* links, CTAs */
+    --clay: #C9846E;     /* soft accent */
+    --header-h: 76px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Assistant', system-ui, sans-serif;
-    font-size: 1.05rem; line-height: 1.6;
-    background: var(--bg); color: var(--ink);
-    letter-spacing: .02em;
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 1.02rem; line-height: 1.65;
+    background: var(--cream); color: var(--ink);
+    -webkit-font-smoothing: antialiased;
   }
-  ::selection { background: var(--pink); color: #fff; }
+  ::selection { background: var(--clay); color: #fff; }
   a { color: inherit; }
-  img, svg { display: block; }
+  img, svg { display: block; max-width: 100%; }
   button { font: inherit; background: none; border: none; cursor: pointer; color: inherit; }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .script { font-family: 'Caveat', cursive; }
 
   /* ---------- header ---------- */
   header.site-header {
-    height: var(--header-h);
-    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-    padding: 0 48px; background: #fff; position: relative; z-index: 50;
+    position: sticky; top: 0; z-index: 50;
+    height: var(--header-h); display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; background: rgba(244, 237, 225, .88);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
   }
-  .header-left { justify-self: start; }
-  .header-right { justify-self: end; display: flex; align-items: center; gap: 10px; }
-  .icon-btn {
-    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-    color: var(--ink); transition: transform .15s ease;
+  .brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+  .brand .mark { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.42rem; letter-spacing: .01em; }
+  .brand .mark em { font-style: normal; color: var(--terra); }
+  .brand .tag { font-family: 'Caveat', cursive; font-size: 1.22rem; color: var(--tan); }
+  nav.main { display: flex; align-items: center; gap: 30px; }
+  nav.main a { text-decoration: none; font-size: .96rem; letter-spacing: .03em; color: var(--ink); transition: color .15s ease; }
+  nav.main a:hover { color: var(--terra); }
+  nav.main a.cta {
+    border: 1px solid var(--terra); color: var(--terra); padding: 8px 18px; border-radius: 30px;
+    transition: background .2s ease, color .2s ease;
   }
-  .icon-btn:hover { transform: scale(1.08); }
-  .icon-btn svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-  .logo-link { justify-self: center; }
-  .logo-link svg.plate { width: 120px; height: auto; transition: transform .25s ease; }
-  .logo-link:hover svg.plate { transform: scale(1.04) rotate(-1deg); }
-  #icon-close { display: none; }
-  body.drawer-open #icon-burger { display: none; }
-  body.drawer-open #icon-close { display: block; }
-  @media (max-width: 749px) {
-    :root { --header-h: 150px; --drawer-w: 100%; }
-    header.site-header { padding: 0 16px; }
-    .logo-link svg.plate { width: 92px; }
+  nav.main a.cta:hover { background: var(--terra); color: var(--paper); }
+  .burger { display: none; }
+  @media (max-width: 760px) {
+    header.site-header { padding: 0 18px; }
+    nav.main { position: fixed; inset: var(--header-h) 0 auto 0; flex-direction: column; gap: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 0;
+      transform: translateY(-130%); transition: transform .28s ease; align-items: stretch; }
+    body.nav-open nav.main { transform: translateY(0); }
+    nav.main a { padding: 14px 24px; border-top: 1px solid var(--line); }
+    nav.main a.cta { margin: 12px 24px; text-align: center; }
+    .burger { display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; }
+    .burger svg { width: 24px; height: 24px; stroke: var(--ink); fill: none; stroke-width: 1.6; }
   }
 
-  /* ---------- search bar (expands under header icons) ---------- */
-  .search-bar {
-    display: none; position: absolute; top: 100%; left: 0; right: 0;
-    background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    padding: 14px 48px;
+  /* ---------- hero ---------- */
+  .hero { display: grid; grid-template-columns: 1.02fr 1fr; min-height: calc(100vh - var(--header-h)); }
+  .hero .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 8vh 6vw; }
+  .hero .kicker { font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--tan); margin-bottom: 22px; }
+  .hero h1 { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(2.6rem, 5.4vw, 4.4rem); line-height: 1.04; letter-spacing: -.01em; }
+  .hero h1 em { font-style: italic; color: var(--terra); }
+  .hero .lead { max-width: 30rem; margin: 26px 0 34px; font-size: 1.14rem; color: var(--muted); }
+  .hero .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero .hero-img { position: relative; background: #d9cdbb; }
+  .hero .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .hero .hero-img .badge {
+    position: absolute; left: 26px; bottom: 26px; background: var(--paper);
+    font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--terra);
+    padding: 6px 20px; border-radius: 40px; box-shadow: 0 6px 22px rgba(42,36,32,.16); transform: rotate(-3deg);
   }
-  body.search-open .search-bar { display: block; }
-  .search-bar form { max-width: 640px; margin: 0 auto; display: flex; border: 1px solid var(--ink); }
-  .search-bar input {
-    flex: 1; border: none; outline: none; font: inherit; padding: 12px 16px;
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero .hero-img { min-height: 52vh; order: -1; }
+    .hero .hero-copy { padding: 7vh 8vw; }
   }
-  .search-bar button { padding: 0 16px; }
-  .search-bar button svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-
-  /* ---------- nav drawer (left, like the screenshot) ---------- */
-  .drawer {
-    position: fixed; top: var(--header-h); left: 0; bottom: 0;
-    width: var(--drawer-w); max-width: 100%;
-    background: #fff; border-top: 1px solid var(--line); border-right: 1px solid var(--line);
-    transform: translateX(-102%); transition: transform .3s ease;
-    z-index: 40; display: flex; flex-direction: column; padding-top: 48px;
-  }
-  body.drawer-open .drawer { transform: translateX(0); }
-  .drawer a.nav-item {
-    text-decoration: none; font-size: 1.15rem; padding: 14px 32px;
-    transition: background .15s ease;
-  }
-  .drawer a.nav-item:hover, .drawer a.nav-item.active { background: #F2F2F2; }
-  .drawer .drawer-foot {
-    margin-top: auto; padding: 24px 32px 40px; border-top: 1px solid var(--line);
-    display: flex; flex-direction: column; gap: 18px;
-  }
-  .drawer .drawer-foot a { text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1rem; }
-  .drawer .drawer-foot a:hover { text-decoration: underline; }
-  .drawer .drawer-foot svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-  .scrim {
-    position: fixed; inset: var(--header-h) 0 0 0; background: rgba(18, 18, 18, .3);
-    opacity: 0; pointer-events: none; transition: opacity .3s ease; z-index: 30;
-  }
-  body.drawer-open .scrim, body.cart-open .scrim { opacity: 1; pointer-events: auto; }
-  body.cart-open .scrim { inset: 0; z-index: 60; }
-
-  /* ---------- cart drawer (right, Dawn-style) ---------- */
-  .cart-drawer {
-    position: fixed; top: 0; right: 0; bottom: 0; width: 420px; max-width: 92vw;
-    background: #fff; z-index: 70; transform: translateX(102%); transition: transform .3s ease;
-    display: flex; flex-direction: column; padding: 24px 28px;
-  }
-  body.cart-open .cart-drawer { transform: translateX(0); }
-  .cart-drawer .cart-head { display: flex; justify-content: space-between; align-items: center; }
-  .cart-drawer h3 { font-size: 1.3rem; font-weight: 600; }
-  .cart-drawer .cart-empty { margin: auto; text-align: center; }
-  .cart-drawer .cart-empty p { font-size: 1.4rem; margin-bottom: 24px; }
 
   /* ---------- buttons ---------- */
   .btn {
-    display: inline-block; text-decoration: none; text-align: center;
-    background: var(--ink); color: #fff; font-weight: 600; font-size: 1rem;
-    padding: 14px 32px; border: 1px solid var(--ink);
-    transition: background .2s ease, color .2s ease, box-shadow .2s ease;
-    cursor: pointer; letter-spacing: .04em;
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none; text-align: center;
+    background: var(--terra); color: var(--paper); font-weight: 500; font-size: .98rem; letter-spacing: .02em;
+    padding: 13px 28px; border-radius: 32px; border: 1px solid var(--terra);
+    transition: background .2s ease, color .2s ease, transform .15s ease;
   }
-  .btn:hover { box-shadow: 0 0 0 1.5px var(--ink) inset, 0 0 0 1.5px #fff; }
-  .btn.secondary { background: #fff; color: var(--ink); }
-  .btn.accent { background: var(--pink); border-color: var(--pink); }
-  .btn.accent:hover { background: var(--grape); border-color: var(--grape); box-shadow: none; }
+  .btn:hover { transform: translateY(-2px); background: #a05a3e; border-color: #a05a3e; }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--cream); transform: translateY(-2px); }
 
-  /* ---------- photo placeholders ---------- */
-  .ph {
-    background: var(--ph-bg); display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 10px; color: var(--ph-fg);
-    border: 1px solid var(--line);
-  }
-  .ph svg { width: 42px; height: 42px; stroke: currentColor; fill: none; stroke-width: 1.2; }
-  .ph span { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; }
+  /* ---------- section shell ---------- */
+  section { padding: 96px 40px; }
+  @media (max-width: 760px) { section { padding: 64px 22px; } }
+  .shell { max-width: 1140px; margin: 0 auto; }
+  .eyebrow { font-size: .78rem; letter-spacing: .26em; text-transform: uppercase; color: var(--tan); margin-bottom: 14px; }
+  .section-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.12; letter-spacing: -.01em; }
 
-  /* ---------- hero banner ---------- */
-  .hero { position: relative; }
-  .hero .ph.hero-ph { width: 100%; height: 72vh; min-height: 420px; border-left: none; border-right: none; }
-  .hero .hero-box {
-    position: absolute; left: 48px; bottom: 48px; background: #fff;
-    padding: 36px 40px; max-width: 440px; border: 1px solid var(--line);
-  }
-  .hero .hero-box h1 {
-    font-family: 'Space Grotesk', sans-serif; font-size: 2.4rem; line-height: 1.1;
-    letter-spacing: .02em; margin-bottom: 10px;
-  }
-  .hero .hero-box h1 span { color: var(--pink); }
-  .hero .hero-box p { color: var(--muted); margin-bottom: 22px; }
-  @media (max-width: 749px) {
-    .hero .hero-box { left: 16px; right: 16px; bottom: 24px; padding: 26px 24px; }
-    .hero .hero-box h1 { font-size: 1.8rem; }
-  }
+  /* ---------- intro / mission ---------- */
+  .intro { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+  .intro .shell { max-width: 760px; }
+  .intro p.big { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(1.4rem, 2.8vw, 1.95rem); line-height: 1.42; }
+  .intro p.big em { font-style: italic; color: var(--terra); }
+  .intro p.sub { margin-top: 22px; color: var(--muted); }
 
-  /* ---------- shared section shell ---------- */
-  section { padding: 72px 48px; }
-  @media (max-width: 749px) { section { padding: 48px 16px; } }
-  .shell { max-width: 1200px; margin: 0 auto; }
-  .section-title {
-    font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; font-weight: 700;
-    margin-bottom: 36px; letter-spacing: .01em;
-  }
-
-  /* ---------- mission (centered rich text) ---------- */
-  .mission { text-align: center; }
-  .mission .shell { max-width: 760px; }
-  .mission p.big { font-size: 1.45rem; line-height: 1.55; font-weight: 600; }
-  .mission p.big em { font-style: normal; color: var(--pink); }
-  .mission p.sub { margin-top: 18px; color: var(--muted); }
-
-  /* ---------- featured grid (product cards) ---------- */
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  @media (max-width: 989px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  /* ---------- what we make ---------- */
+  .make-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 44px; }
+  @media (max-width: 880px) { .make-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; } }
   .pcard { text-decoration: none; display: block; }
-  .pcard .ph { aspect-ratio: 4/5; width: 100%; transition: opacity .2s ease; }
-  .pcard:hover .ph { opacity: .8; }
-  .pcard .pc-title { margin-top: 12px; font-size: 1.02rem; }
-  .pcard:hover .pc-title { text-decoration: underline; }
-  .pcard .pc-price { color: var(--muted); font-size: .95rem; margin-top: 2px; }
+  .pcard .pic { aspect-ratio: 4/5; width: 100%; overflow: hidden; border-radius: 4px; background: #e4dac9; }
+  .pcard .pic img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .pcard:hover .pic img { transform: scale(1.05); }
+  .pcard .pc-title { font-family: 'Fraunces', serif; font-size: 1.28rem; margin-top: 16px; }
+  .pcard .pc-desc { color: var(--muted); font-size: .96rem; margin-top: 4px; }
 
-  /* ---------- founder (featured product layout: gallery + details) ---------- */
-  .founder-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
-  @media (max-width: 989px) { .founder-grid { grid-template-columns: 1fr; gap: 36px; } }
-  .gallery .ph.main { aspect-ratio: 4/5; width: 100%; }
-  .gallery .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
-  .gallery .thumbs .ph { aspect-ratio: 1; }
-  .gallery .thumbs .ph svg { width: 26px; height: 26px; }
-  .gallery .thumbs .ph span { display: none; }
-  .founder-details .kicker {
-    font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
-  }
-  .founder-details h2 {
-    font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; line-height: 1.15;
-    margin: 8px 0 6px;
-  }
-  .founder-details .price-line { font-size: 1.15rem; margin-bottom: 4px; }
-  .founder-details .meta { color: var(--muted); font-size: .95rem; margin-bottom: 24px; }
-  .founder-details .meta a { color: var(--grape); font-weight: 700; text-decoration: none; }
-  .founder-details .meta a:hover { text-decoration: underline; }
-  .founder-details p.bio { margin-bottom: 26px; }
-  .spec { border-top: 1px solid var(--line); padding: 16px 4px; display: flex; gap: 14px; align-items: flex-start; }
-  .spec:last-of-type { border-bottom: 1px solid var(--line); margin-bottom: 28px; }
-  .spec .em { font-size: 1.25rem; line-height: 1.4; }
-  .spec b { display: block; font-size: 1rem; }
-  .spec small { color: var(--muted); font-size: .92rem; line-height: 1.5; }
-  .founder-details .btn { width: 100%; }
+  /* ---------- founder ---------- */
+  .founder { background: var(--paper); border-top: 1px solid var(--line); }
+  .founder-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: center; }
+  @media (max-width: 900px) { .founder-grid { grid-template-columns: 1fr; gap: 36px; } }
+  .founder .portrait { border-radius: 6px; overflow: hidden; background: #e4dac9; }
+  .founder .portrait img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+  .founder h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin: 6px 0 6px; }
+  .founder .role { color: var(--terra); font-weight: 500; margin-bottom: 18px; }
+  .founder p.bio { color: var(--muted); margin-bottom: 14px; }
+  .founder ul.facts { list-style: none; margin: 18px 0 28px; }
+  .founder ul.facts li { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .founder ul.facts li:last-child { border-bottom: 1px solid var(--line); }
+  .founder ul.facts .em { font-size: 1.1rem; }
+  .founder ul.facts b { display: block; font-family: 'Jost', sans-serif; font-weight: 600; }
+  .founder ul.facts small { color: var(--muted); font-size: .92rem; }
 
-  /* ---------- contact ---------- */
-  .contact { text-align: center; border-top: 1px solid var(--line); }
-  .contact .shell { max-width: 560px; }
-  .contact p { color: var(--muted); margin: 10px 0 26px; }
+  /* ---------- story callout ---------- */
+  .story-cta { text-align: center; position: relative; overflow: hidden; }
+  .story-cta .shell { max-width: 720px; position: relative; z-index: 1; }
+  .story-cta .script { font-size: 2rem; color: var(--tan); display: block; margin-bottom: 8px; }
+  .story-cta p { color: var(--muted); margin: 18px auto 30px; max-width: 34rem; }
 
-  /* ---------- footer ---------- */
-  footer.site-footer { border-top: 1px solid var(--line); padding: 56px 48px 36px; }
-  .footer-grid {
-    max-width: 1200px; margin: 0 auto; display: grid;
-    grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
-  }
-  @media (max-width: 749px) { footer.site-footer { padding: 40px 16px 28px; } .footer-grid { grid-template-columns: 1fr; } }
-  .footer-grid h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; }
-  .news-form { display: flex; max-width: 360px; border: 1px solid var(--ink); }
-  .news-form input { flex: 1; border: none; outline: none; font: inherit; padding: 13px 16px; min-width: 0; }
-  .news-form button { padding: 0 18px; transition: transform .15s ease; }
-  .news-form button:hover { transform: translateX(3px); }
-  .news-note { font-size: .9rem; color: var(--muted); margin-top: 10px; min-height: 1.3em; }
-  .footer-social { display: flex; gap: 16px; justify-self: end; }
-  @media (max-width: 749px) { .footer-social { justify-self: start; } }
-  .footer-social a { color: var(--ink); }
-  .footer-social svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-  .footer-base {
-    max-width: 1200px; margin: 48px auto 0; padding-top: 20px; border-top: 1px solid var(--line);
-    font-size: .85rem; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-  }
-  .footer-base a { color: inherit; }
+  /* ---------- contact / footer ---------- */
+  footer.site-footer { background: var(--ink); color: var(--cream); padding: 72px 40px 36px; }
+  .footer-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 760px) { footer.site-footer { padding: 56px 22px 30px; } .footer-grid { grid-template-columns: 1fr; gap: 30px; } }
+  footer .f-mark { font-family: 'Fraunces', serif; font-size: 1.6rem; }
+  footer .f-mark em { font-style: normal; color: var(--clay); }
+  footer p.f-blurb { color: rgba(244,237,225,.7); margin-top: 12px; max-width: 26rem; }
+  footer .f-links h4 { font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--clay); margin-bottom: 14px; }
+  footer .f-links a { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--cream); padding: 6px 0; }
+  footer .f-links a:hover { color: var(--clay); }
+  footer .f-links svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+  .footer-base { max-width: 1140px; margin: 44px auto 0; padding-top: 20px; border-top: 1px solid rgba(244,237,225,.18);
+    font-size: .85rem; color: rgba(244,237,225,.6); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; animation: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="header-left">
-    <button class="icon-btn" id="menu-toggle" aria-label="Menu" aria-expanded="false">
-      <svg id="icon-burger" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
-      <svg id="icon-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-
-  <a class="logo-link" href="#" aria-label="Funky Freshe home">
-    <svg class="plate" viewBox="0 0 220 120" role="img" aria-label="Funky Freshe license plate logo">
-      <rect x="4" y="4" width="212" height="112" rx="12" fill="#1C1027" stroke="#FF4FA3" stroke-width="5"/>
-      <rect x="14" y="14" width="192" height="92" rx="7" fill="none" stroke="#B8E14A" stroke-width="2.5"/>
-      <circle cx="28" cy="26" r="3.5" fill="#B8E14A"/><circle cx="192" cy="26" r="3.5" fill="#B8E14A"/>
-      <circle cx="28" cy="94" r="3.5" fill="#B8E14A"/><circle cx="192" cy="94" r="3.5" fill="#B8E14A"/>
-      <text x="110" y="33" text-anchor="middle" fill="#FF4FA3" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="13" letter-spacing="6">FUNKY</text>
-      <text x="110" y="74" text-anchor="middle" fill="#B8E14A" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="34" letter-spacing="3">FRESHE</text>
-      <text x="110" y="98" text-anchor="middle" fill="#FFF6EA" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="12" letter-spacing="5">OHIO · 26</text>
-    </svg>
+  <a class="brand" href="index.html" aria-label="Funky Fresh Earrings Co. home">
+    <span class="mark">Funky <em>Fresh</em></span>
+    <span class="tag">earrings co.</span>
   </a>
-
-  <div class="header-right">
-    <button class="icon-btn" id="search-toggle" aria-label="Search">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21" stroke-linecap="round"/></svg>
-    </button>
-    <a class="icon-btn" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener" aria-label="Account">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"/></svg>
-    </a>
-    <button class="icon-btn" id="cart-toggle" aria-label="Cart">
-      <svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
-    </button>
-  </div>
-
-  <div class="search-bar">
-    <form id="search-form" role="search">
-      <input type="text" id="search-input" placeholder="Search" aria-label="Search" />
-      <button type="submit" aria-label="Submit search">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21" stroke-linecap="round"/></svg>
-      </button>
-    </form>
-  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+  </button>
+  <nav class="main">
+    <a href="index.html">Home</a>
+    <a href="timeline.html">Our Story</a>
+    <a href="#shop">Shop</a>
+    <a href="#contact">Contact</a>
+    <a class="cta" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">@funkyfreshe</a>
+  </nav>
 </header>
 
-<nav class="drawer" aria-label="Main menu">
-  <a class="nav-item active" href="#" data-close>Home</a>
-  <a class="nav-item" href="#catalog" data-close>Catalog</a>
-  <a class="nav-item" href="#contact" data-close>Contact</a>
-  <div class="drawer-foot">
-    <a href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"/></svg>
-      Log in
-    </a>
-    <a href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.2" cy="6.8" r="1.3" fill="currentColor" stroke="none"/></svg>
-      Instagram
-    </a>
-  </div>
-</nav>
-<div class="scrim" id="scrim"></div>
-
-<aside class="cart-drawer" aria-label="Cart">
-  <div class="cart-head">
-    <h3>Your cart</h3>
-    <button class="icon-btn" id="cart-close" aria-label="Close cart">
-      <svg viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-  <div class="cart-empty">
-    <p>Your cart is empty</p>
-    <a class="btn" href="#catalog" id="cart-continue">Continue browsing</a>
-  </div>
-</aside>
-
 <main>
-  <!-- hero banner -->
-  <div class="hero">
-    <div class="ph hero-ph">
-      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg>
-      <span>Founder photo coming soon</span>
+  <!-- hero -->
+  <section class="hero" style="padding:0;">
+    <div class="hero-copy">
+      <p class="kicker">Handmade in Cincinnati, Ohio</p>
+      <h1>Funky finds,<br><em>fresh</em> energy.</h1>
+      <p class="lead">Handmade shrinky-dink &amp; clay earrings and one-of-a-kind watch purses, made one little kraft card at a time and sold table-side at the markets we love.</p>
+      <div class="hero-actions">
+        <a class="btn" href="timeline.html">Read our story</a>
+        <a class="btn ghost" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">Shop on Instagram</a>
+      </div>
     </div>
-    <div class="hero-box">
-      <h1>Funky <span>Freshe</span></h1>
-      <p>Funky finds, fresh energy, zero filter on the fun. Now serving on Instagram.</p>
-      <a class="btn accent" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">Follow @funkyfreshe</a>
+    <div class="hero-img">
+      <img src="images/booth-music-hall.jpg" alt="Funky Fresh booth at the Cincinnati City Flea, with Music Hall behind it" />
+      <span class="badge">est. 2021</span>
     </div>
-  </div>
+  </section>
 
-  <!-- mission statement -->
-  <section class="mission">
+  <!-- intro -->
+  <section class="intro">
     <div class="shell">
-      <p class="big">Funky Freshe is the corner of Instagram where the energy stays up and the feed stays fun. Never the expected take. With an extra <em>"e,"</em> because regular fresh wasn't enough.</p>
+      <p class="big">It started with one pair of earrings the kids at the pool couldn't stop noticing. Five years later, Funky Fresh is a table full of handmade <em>funky</em> little things, made by hand and sold in person.</p>
       <p class="sub">Founded by Samantha Neeb · Cincinnati, Ohio</p>
     </div>
   </section>
 
-  <!-- featured grid -->
-  <section id="catalog">
+  <!-- what we make -->
+  <section id="shop">
     <div class="shell">
-      <h2 class="section-title">Fresh off the feed</h2>
-      <div class="grid-4">
+      <p class="eyebrow">What we make</p>
+      <h2 class="section-title">A little bit of everything funky</h2>
+      <div class="make-grid">
         <a class="pcard" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">
-          <span class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg><span>Photo coming soon</span></span>
-          <span class="pc-title">The Latest Post</span>
-          <span class="pc-price">@funkyfreshe ↗</span>
+          <span class="pic"><img src="images/product-clay-charms.jpg" alt="Handmade pink clay charm earrings on a kraft card" /></span>
+          <span class="pc-title">Clay charm earrings</span>
+          <span class="pc-desc">Tiny hand-shaped designs, one of a kind.</span>
         </a>
         <a class="pcard" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">
-          <span class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg><span>Photo coming soon</span></span>
-          <span class="pc-title">The Photo Dump</span>
-          <span class="pc-price">@funkyfreshe ↗</span>
+          <span class="pic"><img src="images/product-eras.jpg" alt="Shrinky-dink Eras Tour earrings" /></span>
+          <span class="pc-title">Printed shrink-film</span>
+          <span class="pc-desc">Pop-culture prints, from Eras to everything.</span>
         </a>
         <a class="pcard" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">
-          <span class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg><span>Photo coming soon</span></span>
-          <span class="pc-title">The Reels</span>
-          <span class="pc-price">@funkyfreshe ↗</span>
-        </a>
-        <a class="pcard" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">
-          <span class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg><span>Photo coming soon</span></span>
-          <span class="pc-title">The Comments Section</span>
-          <span class="pc-price">@funkyfreshe ↗</span>
+          <span class="pic"><img src="images/product-watch-purse.jpg" alt="Watch purse crossbody strap made from vintage watch faces" /></span>
+          <span class="pc-title">Watch purses</span>
+          <span class="pc-desc">Crossbody straps built from vintage watches.</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- founder feature (product-detail layout) -->
-  <section id="founder">
+  <!-- founder -->
+  <section class="founder">
     <div class="shell founder-grid">
-      <div class="gallery">
-        <div class="ph main">
-          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg>
-          <span>Founder photo coming soon</span>
-        </div>
-        <div class="thumbs">
-          <div class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg></div>
-          <div class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg></div>
-          <div class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.8"/><path d="M8 5l1.2-2h5.6L16 5"/></svg></div>
-        </div>
+      <div class="portrait">
+        <img src="images/booth-flea-display.jpg" alt="Samantha Neeb at her Funky Fresh market booth" />
       </div>
-      <div class="founder-details">
-        <p class="kicker">Meet the Founder</p>
+      <div>
+        <p class="eyebrow">Meet the maker</p>
         <h2>Samantha Neeb</h2>
-        <p class="price-line">Cornell University Junior &amp; Small Business Owner</p>
-        <p class="meta">She/Her · Cincinnati, Ohio · <a href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">"samjam" on Instagram</a></p>
-        <p class="bio">Samantha is the creator and curator behind Funky Freshe, with equal parts science brain and creative energy, bringing both to every post.</p>
-        <div class="spec"><span class="em">🎓</span><span><b>Cornell University · Junior</b><small>Animal Science Major with a concentration in Applied Animal Biology &amp; Management.</small></span></div>
-        <div class="spec"><span class="em">📈</span><span><b>Double Minor: Business &amp; Communications</b><small>The strategy and the storytelling behind the brand.</small></span></div>
-        <div class="spec"><span class="em">✨</span><span><b>Founder, @funkyfreshe</b><small>Running the feed, the vibe, and everything in between.</small></span></div>
-        <a class="btn" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">Follow @funkyfreshe</a>
+        <p class="role">Founder &amp; maker · Cornell junior</p>
+        <p class="bio">Samantha is the creator and curator behind Funky Fresh, with equal parts science brain and creative energy, bringing both to every pair.</p>
+        <ul class="facts">
+          <li><span class="em">🎓</span><span><b>Cornell University · Junior</b><small>Animal Science, concentration in Applied Animal Biology &amp; Management.</small></span></li>
+          <li><span class="em">📈</span><span><b>Double minor: Business &amp; Communications</b><small>The strategy and the storytelling behind the brand.</small></span></li>
+          <li><span class="em">✨</span><span><b>Maker-in-chief</b><small>Every pair cut, shaped, and carded by hand in Cincinnati.</small></span></li>
+        </ul>
+        <a class="btn" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">Follow along</a>
       </div>
+    </div>
+  </section>
+
+  <!-- story cta -->
+  <section class="story-cta">
+    <div class="shell">
+      <span class="script">a look back</span>
+      <h2 class="section-title">Five years, one table at a time.</h2>
+      <p>From a poolside idea to the Cincinnati City Flea to the Cornell Creators Market. See how Funky Fresh grew up.</p>
+      <a class="btn" href="timeline.html">See the timeline →</a>
     </div>
   </section>
 
   <!-- contact -->
-  <section class="contact" id="contact">
+  <section id="contact" class="intro" style="border-bottom:none;">
     <div class="shell">
-      <h2 class="section-title" style="margin-bottom:0;">Contact</h2>
-      <p>Fastest way to reach Funky Freshe is a DM on Instagram.</p>
-      <a class="btn secondary" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">Message @funkyfreshe</a>
+      <p class="eyebrow">Say hi</p>
+      <h2 class="section-title">Come find us</h2>
+      <p class="sub" style="margin-top:16px;">The fastest way to reach Funky Fresh is a DM on Instagram. Catch us in person at the Cincinnati City Flea and the Cornell Creators Market.</p>
+      <p style="margin-top:24px;"><a class="btn" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">Message @funkyfreshe</a></p>
     </div>
   </section>
 </main>
@@ -411,73 +282,36 @@
 <footer class="site-footer">
   <div class="footer-grid">
     <div>
-      <h4>Subscribe to our emails</h4>
-      <form class="news-form" id="news-form">
-        <input type="email" id="news-email" placeholder="Email" aria-label="Email" required />
-        <button type="submit" aria-label="Subscribe">→</button>
-      </form>
-      <p class="news-note" id="news-note"></p>
+      <p class="f-mark">Funky <em>Fresh</em> Earrings Co.</p>
+      <p class="f-blurb">Handmade earrings &amp; watch purses, made in Cincinnati, Ohio. Funky finds, fresh energy, since 2021.</p>
     </div>
-    <div class="footer-social">
-      <a href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener" aria-label="Instagram">
+    <div class="f-links">
+      <h4>Elsewhere</h4>
+      <a href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.2" cy="6.8" r="1.3" fill="currentColor" stroke="none"/></svg>
+        @funkyfreshe
+      </a><br>
+      <a href="timeline.html">
+        <svg viewBox="0 0 24 24"><path d="M12 8v8M8 12h8" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg>
+        Our story
       </a>
     </div>
   </div>
   <div class="footer-base">
-    <span>© <span id="year"></span>, Funky Freshe</span>
-    <a href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">@funkyfreshe on Instagram</a>
+    <span>© <span id="year"></span> Funky Fresh Earrings Co.</span>
+    <span>Made by hand in Cincinnati, Ohio</span>
   </div>
 </footer>
 
 <script>
-  var body = document.body;
-
-  // nav drawer
-  var menuToggle = document.getElementById('menu-toggle');
-  menuToggle.addEventListener('click', function () {
-    body.classList.toggle('drawer-open');
-    body.classList.remove('search-open');
-    menuToggle.setAttribute('aria-expanded', body.classList.contains('drawer-open'));
+  var burger = document.getElementById('burger');
+  burger.addEventListener('click', function () {
+    document.body.classList.toggle('nav-open');
+    burger.setAttribute('aria-expanded', document.body.classList.contains('nav-open'));
   });
-  document.querySelectorAll('[data-close]').forEach(function (a) {
-    a.addEventListener('click', function () { body.classList.remove('drawer-open'); });
+  document.querySelectorAll('nav.main a').forEach(function (a) {
+    a.addEventListener('click', function () { document.body.classList.remove('nav-open'); });
   });
-
-  // cart drawer
-  document.getElementById('cart-toggle').addEventListener('click', function () {
-    body.classList.add('cart-open');
-    body.classList.remove('drawer-open');
-  });
-  document.getElementById('cart-close').addEventListener('click', function () { body.classList.remove('cart-open'); });
-  document.getElementById('cart-continue').addEventListener('click', function () { body.classList.remove('cart-open'); });
-
-  // scrim + escape close everything
-  document.getElementById('scrim').addEventListener('click', function () {
-    body.classList.remove('drawer-open', 'cart-open');
-  });
-  window.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') body.classList.remove('drawer-open', 'cart-open', 'search-open');
-  });
-
-  // search: expands a bar; submitting scrolls to the catalog section
-  document.getElementById('search-toggle').addEventListener('click', function () {
-    body.classList.toggle('search-open');
-    body.classList.remove('drawer-open');
-    if (body.classList.contains('search-open')) document.getElementById('search-input').focus();
-  });
-  document.getElementById('search-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    body.classList.remove('search-open');
-    document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
-  });
-
-  // newsletter: honest placeholder until email collection is set up
-  document.getElementById('news-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    document.getElementById('news-note').textContent = 'Email signup is coming soon. Follow @funkyfreshe on Instagram for updates in the meantime.';
-  });
-
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
