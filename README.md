@@ -1,12 +1,12 @@
-# Funky Fresh Earrings Co.
+# Funky Freshe
 
 Site for [@funkyfreshe](https://www.instagram.com/funkyfreshe) · handmade shrinky-dink & clay earrings and watch purses, made in Cincinnati, Ohio by Samantha Neeb.
 
 Static site, no build step. Deployed via GitHub Pages.
 
 ## Pages
-- `index.html` · home (hero, what we make, the maker, contact)
-- `timeline.html` · Our Story, a visual timeline of the business from 2021 to today
+- `index.html` · single-page home: hero, what we make, the Our Story timeline (`#story`), the maker, contact
+- `timeline.html` · redirects to `index.html#story` (kept so the old URL still works)
 - `images/` · photos (booth shots, products, founder)
 - `logo.svg` · FF monogram / favicon
 
