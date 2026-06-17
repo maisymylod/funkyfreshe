@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Story — Funky Fresh Earrings Co.</title>
+<meta name="description" content="A look back at Funky Fresh Earrings Co. From a poolside idea in 2021 to the Cincinnati City Flea and the Cornell Creators Market." />
+<meta property="og:title" content="Our Story — Funky Fresh Earrings Co." />
+<meta property="og:description" content="A look back at five years of Funky Fresh, one table at a time." />
+<meta property="og:image" content="images/booth-music-hall.jpg" />
+<link rel="icon" type="image/svg+xml" href="logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Jost:wght@400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #F4EDE1;
+    --paper: #FBF7EF;
+    --ink: #2A2420;
+    --muted: #756A5E;
+    --line: rgba(42, 36, 32, .14);
+    --tan: #B58A5C;
+    --terra: #B66A4C;
+    --clay: #C9846E;
+    --header-h: 76px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', system-ui, sans-serif;
+    font-size: 1.02rem; line-height: 1.65;
+    background: var(--cream); color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--clay); color: #fff; }
+  a { color: inherit; }
+  img, svg { display: block; max-width: 100%; }
+  button { font: inherit; background: none; border: none; cursor: pointer; color: inherit; }
+
+  /* ---------- header (shared) ---------- */
+  header.site-header {
+    position: sticky; top: 0; z-index: 50;
+    height: var(--header-h); display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; background: rgba(244, 237, 225, .88);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  .brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+  .brand .mark { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.42rem; }
+  .brand .mark em { font-style: normal; color: var(--terra); }
+  .brand .tag { font-family: 'Caveat', cursive; font-size: 1.22rem; color: var(--tan); }
+  nav.main { display: flex; align-items: center; gap: 30px; }
+  nav.main a { text-decoration: none; font-size: .96rem; letter-spacing: .03em; color: var(--ink); transition: color .15s ease; }
+  nav.main a:hover, nav.main a.active { color: var(--terra); }
+  nav.main a.cta { border: 1px solid var(--terra); color: var(--terra); padding: 8px 18px; border-radius: 30px; transition: background .2s ease, color .2s ease; }
+  nav.main a.cta:hover { background: var(--terra); color: var(--paper); }
+  .burger { display: none; }
+  @media (max-width: 760px) {
+    header.site-header { padding: 0 18px; }
+    nav.main { position: fixed; inset: var(--header-h) 0 auto 0; flex-direction: column; gap: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px 0;
+      transform: translateY(-130%); transition: transform .28s ease; align-items: stretch; }
+    body.nav-open nav.main { transform: translateY(0); }
+    nav.main a { padding: 14px 24px; border-top: 1px solid var(--line); }
+    nav.main a.cta { margin: 12px 24px; text-align: center; }
+    .burger { display: flex; width: 40px; height: 40px; align-items: center; justify-content: center; }
+    .burger svg { width: 24px; height: 24px; stroke: var(--ink); fill: none; stroke-width: 1.6; }
+  }
+
+  /* ---------- page intro ---------- */
+  .tl-intro { max-width: 1180px; margin: 0 auto; padding: 84px 40px 30px; }
+  .tl-intro .script { font-family: 'Caveat', cursive; font-size: 1.7rem; color: var(--tan); }
+  .tl-intro h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(2.6rem, 6.5vw, 5rem); line-height: 1.02; letter-spacing: -.015em; margin: 6px 0 0; max-width: 14ch; }
+  .tl-intro p { color: var(--muted); max-width: 40rem; margin-top: 22px; font-size: 1.08rem; }
+  @media (max-width: 760px) { .tl-intro { padding: 56px 22px 16px; } }
+
+  /* ---------- timeline core ----------
+     Two columns: text (left) | photos (right).
+     A continuous vertical rule with dots sits between them. */
+  .timeline { max-width: 1180px; margin: 0 auto; padding: 30px 40px 40px; position: relative; }
+  .tl-track { position: relative; }
+  /* the spine */
+  .tl-track::before {
+    content: ""; position: absolute; top: 8px; bottom: 8px; left: 50%;
+    width: 1px; background: var(--line); transform: translateX(-.5px);
+  }
+  .entry { position: relative; display: grid; grid-template-columns: 1fr 1fr; column-gap: 64px; align-items: start; }
+  .entry .text { padding: 0 14px 64px 0; text-align: right; }
+  .entry .media { padding: 0 0 64px 14px; }
+  /* dot on the spine, aligned to the date */
+  .entry .text::after {
+    content: ""; position: absolute; top: 16px; left: 50%; width: 13px; height: 13px;
+    background: var(--cream); border: 2px solid var(--tan); border-radius: 50%;
+    transform: translate(-50%, 0); z-index: 2;
+  }
+  .entry .date { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.4rem); color: var(--tan); line-height: 1.05; }
+  .entry .label { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.18rem; margin: 6px 0 8px; color: var(--ink); }
+  .entry .body { color: var(--muted); font-size: 1rem; max-width: 34ch; margin-left: auto; }
+  /* photos */
+  .entry figure { margin: 0; max-width: 340px; }
+  .entry .media figure { margin-right: auto; }
+  .entry figure img { width: 100%; border-radius: 6px; box-shadow: 0 14px 34px rgba(42,36,32,.16); background: #e4dac9; display: block; }
+  .entry figure figcaption { font-family: 'Caveat', cursive; font-size: 1.2rem; color: var(--tan); margin-top: 10px; text-align: left; }
+  /* slight stagger so photos read as a collage, not a column */
+  .entry.shift figure { margin-top: 34px; }
+  .entry .media.empty { padding-bottom: 0; }
+
+  /* keep-going script accent partway down */
+  .tl-aside { position: relative; text-align: center; padding: 14px 0 64px; }
+  .tl-aside .script { font-family: 'Caveat', cursive; font-size: 2rem; color: var(--terra); }
+  .tl-aside .arrow { display: block; margin: 4px auto 0; width: 22px; stroke: var(--terra); fill: none; stroke-width: 1.6; }
+
+  /* ---------- responsive: stack into a left-rail timeline ---------- */
+  @media (max-width: 820px) {
+    .timeline { padding: 20px 22px 30px; }
+    .tl-track::before { left: 7px; }
+    .entry { grid-template-columns: 1fr; column-gap: 0; padding-left: 30px; }
+    .entry .text { text-align: left; padding: 0 0 14px 0; }
+    .entry .text::after { left: -23px; top: 12px; transform: none; }
+    .entry .body { margin-left: 0; max-width: none; }
+    .entry .media { padding: 0 0 48px 0; }
+    .entry figure, .entry .media figure { max-width: 320px; margin: 0; }
+    .entry figure figcaption { text-align: left; }
+    .entry.shift figure { margin-top: 0; }
+    .tl-aside { text-align: left; padding-left: 30px; }
+  }
+
+  /* ---------- closing cta ---------- */
+  .tl-end { background: var(--paper); border-top: 1px solid var(--line); text-align: center; padding: 84px 22px; }
+  .tl-end h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(1.8rem, 3.4vw, 2.5rem); }
+  .tl-end p { color: var(--muted); max-width: 34rem; margin: 16px auto 28px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; background: var(--terra); color: var(--paper);
+    font-weight: 500; font-size: .98rem; letter-spacing: .02em; padding: 13px 28px; border-radius: 32px; border: 1px solid var(--terra);
+    transition: background .2s ease, transform .15s ease; }
+  .btn:hover { background: #a05a3e; border-color: #a05a3e; transform: translateY(-2px); }
+
+  footer.site-footer { background: var(--ink); color: rgba(244,237,225,.7); padding: 40px; text-align: center; font-size: .85rem; }
+  footer.site-footer .f-mark { font-family: 'Fraunces', serif; color: var(--cream); font-size: 1.3rem; margin-bottom: 8px; }
+  footer.site-footer .f-mark em { font-style: normal; color: var(--clay); }
+  footer.site-footer a { color: var(--clay); text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+  /* reveal on scroll */
+  .entry, .tl-aside { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .entry.in, .tl-aside.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .entry, .tl-aside { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Funky Fresh Earrings Co. home">
+    <span class="mark">Funky <em>Fresh</em></span>
+    <span class="tag">earrings co.</span>
+  </a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+  </button>
+  <nav class="main">
+    <a href="index.html">Home</a>
+    <a href="timeline.html" class="active">Our Story</a>
+    <a href="index.html#shop">Shop</a>
+    <a href="index.html#contact">Contact</a>
+    <a class="cta" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">@funkyfreshe</a>
+  </nav>
+</header>
+
+<main>
+  <div class="tl-intro">
+    <span class="script">a look back</span>
+    <h1>The Funky Fresh story</h1>
+    <p>It started with one pair of earrings and a couple of curious kids at the pool. Here's how a poolside idea grew into a table full of handmade things, one market at a time.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-track" id="track">
+
+      <!-- 2021: the idea -->
+      <div class="entry">
+        <div class="text">
+          <div class="date">July 2021</div>
+          <div class="label">The idea</div>
+          <p class="body">The kids Samantha lifeguarded over the summer kept noticing her "funky" and "fresh" earrings. The nickname stuck, and so did the idea.</p>
+        </div>
+        <div class="media">
+          <figure>
+            <img src="images/story-origin.jpg" alt="Samantha holding a printed sheet of early earring designs" loading="lazy" />
+            <figcaption>where it all began</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Aug 2021: Etsy -->
+      <div class="entry shift">
+        <div class="text">
+          <div class="date">August 2021</div>
+          <div class="label">Etsy opens</div>
+          <p class="body">Funky Fresh went online. The first handmade pairs shipped out to strangers across the country, one little kraft card at a time.</p>
+        </div>
+        <div class="media">
+          <figure>
+            <img src="images/product-clay-charms.jpg" alt="Handmade pink clay charm earrings on a kraft card" loading="lazy" />
+            <figcaption>made by hand</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- July 2022: first City Flea -->
+      <div class="entry">
+        <div class="text">
+          <div class="date">July 2022</div>
+          <div class="label">First time at the Cincinnati City Flea</div>
+          <p class="body">A folding tent, a table of earrings, and a whole lot of nerves. The first in-person booth at Cincinnati's beloved City Flea.</p>
+        </div>
+        <div class="media">
+          <figure>
+            <img src="images/booth-flea-display.jpg" alt="Funky Fresh market booth with earring display boards" loading="lazy" />
+            <figcaption>booth no. 1</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- July 2023: second summer -->
+      <div class="entry shift">
+        <div class="text">
+          <div class="date">July 2023</div>
+          <div class="label">Second summer of the City Flea</div>
+          <p class="body">Back for round two, now a regular fixture under the Music Hall sky. The booth got bigger and the regulars started showing up.</p>
+        </div>
+        <div class="media empty"></div>
+      </div>
+
+      <!-- keep going accent -->
+      <div class="tl-aside">
+        <span class="script">keep going</span>
+        <svg class="arrow" viewBox="0 0 24 32"><path d="M12 2v26M5 21l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- July 2024: third summer + printed sheets -->
+      <div class="entry">
+        <div class="text">
+          <div class="date">July 2024</div>
+          <div class="label">Third summer + printed sheets</div>
+          <p class="body">A third summer at the Flea, and a new trick: printed shrink-film designs (hello, Eras Tour) that let the collection get a little louder.</p>
+        </div>
+        <div class="media">
+          <figure>
+            <img src="images/product-eras.jpg" alt="Shrinky-dink Eras Tour earrings on a card" loading="lazy" />
+            <figcaption>the printed era</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- March 2025: closing Etsy -->
+      <div class="entry shift">
+        <div class="text">
+          <div class="date">March 2025</div>
+          <div class="label">Closing the Etsy shop</div>
+          <p class="body">College moved Samantha to Cornell, and keeping up with online orders from a dorm room wasn't realistic. The Etsy shop closed, but the brand didn't slow down.</p>
+        </div>
+        <div class="media empty"></div>
+      </div>
+
+      <!-- July 2025: watch purses -->
+      <div class="entry">
+        <div class="text">
+          <div class="date">July 2025</div>
+          <div class="label">Back at the Flea + watch purses</div>
+          <p class="body">Still vending all summer at the City Flea, and debuting something new: watch purses, crossbody straps built from vintage watch faces.</p>
+        </div>
+        <div class="media">
+          <figure>
+            <img src="images/booth-music-hall.jpg" alt="Funky Fresh booth at the Cincinnati City Flea with Music Hall behind it" loading="lazy" />
+            <figcaption>under the Music Hall sky</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Dec 2025: Cornell Creators Market -->
+      <div class="entry shift">
+        <div class="text">
+          <div class="date">December 2025</div>
+          <div class="label">Cornell Creators Market</div>
+          <p class="body">Funky Fresh went to college too, joining the Cornell Creators Market for the very first time.</p>
+        </div>
+        <div class="media">
+          <figure>
+            <img src="images/product-watch-purse.jpg" alt="Watch purse crossbody strap made from vintage watch faces" loading="lazy" />
+            <figcaption>the watch purses</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- March 2026: first banner sale -->
+      <div class="entry">
+        <div class="text">
+          <div class="date">March 2026</div>
+          <div class="label">First banner sale</div>
+          <p class="body">The first proper banner sale. A bigger setup, a bigger crowd, and the brand's name up in lights (well, on a banner).</p>
+        </div>
+        <div class="media">
+          <figure>
+            <img src="images/booth-early-funky.jpg" alt="Early Funky Fresh booth with a hand-lettered banner" loading="lazy" />
+            <figcaption>name in lights</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- April 2026: Cornell Creators Market -->
+      <div class="entry shift">
+        <div class="text">
+          <div class="date">April 2026</div>
+          <div class="label">Cornell Creators Market</div>
+          <p class="body">Back at the Creators Market with a sharper booth and a full table of new designs.</p>
+        </div>
+        <div class="media empty"></div>
+      </div>
+
+      <!-- July 2026: website -->
+      <div class="entry">
+        <div class="text">
+          <div class="date">July 2026</div>
+          <div class="label">A home of its own</div>
+          <p class="body">Five years in, Funky Fresh gets a website. You're looking at it.</p>
+        </div>
+        <div class="media empty"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="tl-end">
+    <h2>And we're just getting started.</h2>
+    <p>Come see what's new on the table. Catch us at the Cincinnati City Flea and the Cornell Creators Market, or shop the latest on Instagram.</p>
+    <a class="btn" href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">Follow @funkyfreshe</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="f-mark">Funky <em>Fresh</em> Earrings Co.</p>
+  <p>Handmade in Cincinnati, Ohio · <a href="https://www.instagram.com/funkyfreshe" target="_blank" rel="noopener">@funkyfreshe</a></p>
+</footer>
+
+<script>
+  var burger = document.getElementById('burger');
+  burger.addEventListener('click', function () {
+    document.body.classList.toggle('nav-open');
+    burger.setAttribute('aria-expanded', document.body.classList.contains('nav-open'));
+  });
+  document.querySelectorAll('nav.main a').forEach(function (a) {
+    a.addEventListener('click', function () { document.body.classList.remove('nav-open'); });
+  });
+  // reveal entries on scroll
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.entry, .tl-aside').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.entry, .tl-aside').forEach(function (el) { el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
