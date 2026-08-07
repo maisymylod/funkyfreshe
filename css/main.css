@@ -4,25 +4,25 @@
    to this block, so retheming later means editing these vars.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@500;700&display=swap');
 
 :root{
-  /* --- color --- */
-  --pink:        #FF3D8A;   /* primary brand color */
-  --pink-deep:   #C21858;   /* hover / pressed */
-  --red:         #E8402C;   /* CTAs, price tags */
-  --red-deep:    #B92E1E;
-  --cream:       #FFF3EF;   /* page background, warm blush */
+  /* --- color, pulled from the pink/red stripe reference --- */
+  --pink:        #FF6FB8;   /* primary brand color */
+  --pink-deep:   #DE3E93;   /* hover / pressed */
+  --red:         #EC1C24;   /* CTAs, price tags */
+  --red-deep:    #B8121A;
+  --cream:       #FFF6E4;   /* vanilla page background */
   --white:       #FFFFFF;
   --ink:         #2B0F1A;   /* near-black text, maroon undertone */
-  --ink-soft:    #6B4A52;   /* secondary text */
+  --ink-soft:    #78584F;   /* secondary text, warmed to sit on vanilla */
   --kraft:       #D9A441;   /* handmade / kraft-tag accent, used sparingly */
-  --line:        #F0D9D2;   /* hairline borders on cream */
+  --line:        #F0DCB8;   /* hairline borders on vanilla */
   --success:     #2E8B57;
 
   /* --- type --- */
-  --font-display: 'Fredoka', system-ui, sans-serif;
-  --font-body:    'Work Sans', system-ui, sans-serif;
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
   --font-tag:     'Space Mono', monospace;
 
   /* --- shape / motion --- */
@@ -268,7 +268,7 @@ h1, h2, h3{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px dashed #F0B9C9;
+  border: 2px dashed #FFC3E1;
 }
 .tag-photo.is-empty .placeholder{
   text-align: center;
