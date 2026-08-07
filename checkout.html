@@ -46,11 +46,20 @@
 <script src="js/cart.js"></script>
 <script>
   const body = document.getElementById("checkout-body");
+  const cfg = window.FF_CONFIG || {};
 
   function escapeHtml(str) {
     const div = document.createElement("div");
     div.textContent = str == null ? "" : String(str);
     return div.innerHTML;
+  }
+
+  function getTotals() {
+    const subtotal = FFCart.getSubtotal();
+    const shipping = Number(cfg.SHIPPING_FLAT_RATE) || 0;
+    const tax = subtotal * (Number(cfg.TAX_RATE) || 0);
+    const total = subtotal + shipping + tax;
+    return { subtotal, shipping, tax, total };
   }
 
   function renderEmptyState() {
@@ -63,7 +72,7 @@
 
   function renderForm() {
     const items = FFCart.getLineItems();
-    const subtotal = FFCart.getSubtotal();
+    const { subtotal, shipping, tax, total } = getTotals();
 
     const receiptRows = items.map(i => `
       <div class="receipt-item">
@@ -95,22 +104,25 @@
               <label for="notes">Order notes (optional)</label>
               <textarea id="notes" rows="3" placeholder="Anything we should know?"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Place order</button>
+            <button type="submit" class="btn btn-primary btn-block">Continue to payment</button>
           </form>
         </div>
 
         <div class="receipt-card">
           <h3>Order summary</h3>
           <div class="receipt-items">${receiptRows}</div>
-          <div class="summary-row total"><span>Total</span><span>$${FFCart.formatMoney(subtotal)}</span></div>
-          <div class="pay-note">Payment is collected through PayPal after you place your order. We'll confirm by email once it's received.</div>
+          <div class="summary-row"><span>Subtotal</span><span>$${FFCart.formatMoney(subtotal)}</span></div>
+          <div class="summary-row"><span>Shipping</span><span>$${FFCart.formatMoney(shipping)}</span></div>
+          <div class="summary-row"><span>Tax</span><span>$${FFCart.formatMoney(tax)}</span></div>
+          <div class="summary-row total"><span>Total</span><span>$${FFCart.formatMoney(total)}</span></div>
+          <div class="pay-note">You'll pay on the next step, by card or PayPal. We'll confirm your order by email once payment is received.</div>
         </div>
       </div>
     `;
 
     document.getElementById("checkout-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      placeOrder({
+      goToPayment({
         name: document.getElementById("name").value.trim(),
         email: document.getElementById("email").value.trim(),
         address: document.getElementById("address").value.trim(),
@@ -119,25 +131,93 @@
     });
   }
 
-  function placeOrder(customer) {
+  function sendOrderEmail(customer, orderId, totals) {
     const items = FFCart.getLineItems();
-    const total = FFCart.getSubtotal();
-    const orderId = "FF-" + Date.now().toString().slice(-6);
-    const cfg = window.FF_CONFIG || {};
-
-    const paypalAmount = total.toFixed(2);
-    const paypalUrl = `https://paypal.me/${encodeURIComponent(cfg.PAYPAL_USERNAME || "")}/${paypalAmount}`;
-
     const itemLines = items.map(i => `${i.name} x${i.qty} — $${FFCart.formatMoney(i.lineTotal)}`).join("%0D%0A");
     const mailBody =
       `Order ${orderId}%0D%0A%0D%0A` +
-      `${itemLines}%0D%0A%0D%0ATotal: $${FFCart.formatMoney(total)}%0D%0A%0D%0A` +
+      `${itemLines}%0D%0A%0D%0A` +
+      `Subtotal: $${FFCart.formatMoney(totals.subtotal)}%0D%0A` +
+      `Shipping: $${FFCart.formatMoney(totals.shipping)}%0D%0A` +
+      `Tax: $${FFCart.formatMoney(totals.tax)}%0D%0A` +
+      `Total: $${FFCart.formatMoney(totals.total)}%0D%0A%0D%0A` +
       `Name: ${customer.name}%0D%0AEmail: ${customer.email}%0D%0AShip to: ${customer.address}%0D%0ANotes: ${customer.notes || "—"}`;
-    const mailUrl = `mailto:${encodeURIComponent(cfg.CONTACT_EMAIL || "")}?subject=${encodeURIComponent("Order " + orderId)}&body=${mailBody}`;
+    return `mailto:${encodeURIComponent(cfg.CONTACT_EMAIL || "")}?subject=${encodeURIComponent("Order " + orderId)}&body=${mailBody}`;
+  }
 
-    // Open the order email right away so you get notified even if the
-    // customer doesn't click the "Email order details" button below.
+  function goToPayment(customer) {
+    const totals = getTotals();
+    const orderId = "FF-" + Date.now().toString().slice(-6);
+    const mailUrl = sendOrderEmail(customer, orderId, totals);
+
+    // Let you know an order is coming, right away — before payment even completes.
     window.location.href = mailUrl;
+
+    if (cfg.PAYPAL_CLIENT_ID) {
+      renderSecurePayment(customer, orderId, totals, mailUrl);
+    } else {
+      renderManualPayment(customer, orderId, totals, mailUrl);
+    }
+  }
+
+  function renderSecurePayment(customer, orderId, totals, mailUrl) {
+    body.innerHTML = `
+      <div class="order-confirm">
+        <span class="stamp">Order ${orderId}</span>
+        <h2>Pay $${FFCart.formatMoney(totals.total)} to finish</h2>
+        <p style="max-width:440px; margin:14px auto 26px; color:var(--ink-soft);">
+          Pay securely by card or PayPal below — your card details go straight to PayPal, never through this site.
+        </p>
+        <div id="paypal-button-container" style="max-width:420px; margin:0 auto;"></div>
+        <p id="paypal-fallback-note" style="display:none; color:var(--ink-soft); font-size:13px; margin-top:16px;">
+          Payment buttons couldn't load. <a href="${mailUrl}" style="text-decoration:underline;">Email us your order</a> and we'll send a secure payment link instead.
+        </p>
+        <a href="index.html" class="btn-ghost" style="display:inline-block; margin-top:24px;">Cancel and go home</a>
+      </div>
+    `;
+
+    const script = document.createElement("script");
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(cfg.PAYPAL_CLIENT_ID)}&currency=USD`;
+    script.onload = () => {
+      if (!window.paypal) { showPaypalFallback(); return; }
+      window.paypal.Buttons({
+        style: { shape: "pill", height: 45 },
+        createOrder: (data, actions) => actions.order.create({
+          purchase_units: [{ amount: { value: totals.total.toFixed(2) } }]
+        }),
+        onApprove: (data, actions) => actions.order.capture().then(() => {
+          FFCart.clearCart();
+          showPaidConfirmation(customer, orderId, totals);
+        }),
+        onError: () => showPaypalFallback()
+      }).render("#paypal-button-container");
+    };
+    script.onerror = showPaypalFallback;
+    document.head.appendChild(script);
+  }
+
+  function showPaypalFallback() {
+    const note = document.getElementById("paypal-fallback-note");
+    if (note) note.style.display = "block";
+  }
+
+  function showPaidConfirmation(customer, orderId, totals) {
+    body.innerHTML = `
+      <div class="order-confirm">
+        <span class="stamp">Payment received</span>
+        <h2>Thanks, ${escapeHtml(customer.name.split(" ")[0] || "friend")}!</h2>
+        <p class="order-id">Order ${orderId} &middot; Total $${FFCart.formatMoney(totals.total)}</p>
+        <p style="max-width:440px; margin:18px auto; color:var(--ink-soft);">
+          Your payment went through. We'll get your purse packed up and shipped out soon.
+        </p>
+        <a href="index.html" class="btn btn-primary" style="margin-top:10px;">Back to home</a>
+      </div>
+    `;
+  }
+
+  function renderManualPayment(customer, orderId, totals, mailUrl) {
+    const paypalAmount = totals.total.toFixed(2);
+    const paypalUrl = `https://paypal.me/${encodeURIComponent(cfg.PAYPAL_USERNAME || "")}/${paypalAmount}`;
 
     FFCart.clearCart();
 
@@ -145,7 +225,7 @@
       <div class="order-confirm">
         <span class="stamp">Order placed</span>
         <h2>Thanks, ${escapeHtml(customer.name.split(" ")[0] || "friend")}!</h2>
-        <p class="order-id">Order ${orderId} &middot; Total $${FFCart.formatMoney(total)}</p>
+        <p class="order-id">Order ${orderId} &middot; Total $${FFCart.formatMoney(totals.total)}</p>
         <p style="max-width:440px; margin:18px auto; color:var(--ink-soft);">
           Two quick steps to finish: send your payment on PayPal, then email us your order so we can match it up.
         </p>

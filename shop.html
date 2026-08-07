@@ -55,7 +55,9 @@
 
   function renderShop() {
     const grid = document.getElementById("shop-grid");
-    const products = window.FF_PRODUCTS || [];
+    // Each purse is one-of-a-kind — once it's sold, it comes off the shop
+    // page entirely rather than sticking around unpurchasable.
+    const products = (window.FF_PRODUCTS || []).filter((p) => p.inStock);
 
     if (products.length === 0) {
       grid.innerHTML = `<div class="shop-empty">No purses listed yet — add some in js/products.js.</div>`;
@@ -69,19 +71,20 @@
 
       return `
         <article class="tag-card" data-id="${p.id}">
-          ${!p.inStock ? '<span class="sold-badge">Sold</span>' : ''}
           <div class="tag-string"></div>
           <div class="tag-hole"></div>
-          <div class="tag-photo ${p.image ? '' : 'is-empty'}">${photo}</div>
-          <div class="tag-body">
-            <h3>${escapeHtml(p.name)}</h3>
-            <p class="tag-desc">${escapeHtml(p.description || "")}</p>
-            <div class="tag-footer">
-              <span class="tag-price">${Number(p.price || 0).toFixed(2)}</span>
-              <button class="tag-add" data-id="${p.id}" ${p.inStock ? "" : "disabled"}>
-                ${p.inStock ? "Add to cart" : "Sold out"}
-              </button>
+          <a class="tag-link" href="product.html?id=${encodeURIComponent(p.id)}">
+            <div class="tag-photo ${p.image ? '' : 'is-empty'}">${photo}</div>
+            <div class="tag-body">
+              <h3>${escapeHtml(p.name)}</h3>
+              <p class="tag-desc">${escapeHtml(p.description || "")}</p>
+              <div class="tag-barcode" aria-hidden="true"></div>
+              <span class="tag-sku">No. ${escapeHtml(p.id)}</span>
             </div>
+          </a>
+          <div class="tag-footer">
+            <span class="tag-price">${Number(p.price || 0).toFixed(2)}</span>
+            <button class="tag-add" data-id="${p.id}">Add to cart</button>
           </div>
         </article>
       `;
@@ -89,7 +92,6 @@
 
     grid.querySelectorAll(".tag-add").forEach((btn) => {
       btn.addEventListener("click", () => {
-        if (btn.disabled) return;
         const id = btn.getAttribute("data-id");
         FFCart.addItem(id, 1);
         const original = btn.textContent;

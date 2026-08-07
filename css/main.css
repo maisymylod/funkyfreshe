@@ -291,6 +291,12 @@ h1, h2, h3{
 }
 .tag-photo.is-empty .placeholder svg{ margin: 0 auto 8px; display:block; }
 
+.tag-link{
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .tag-body h3{
   font-size: 19px;
   margin-bottom: 6px;
@@ -298,14 +304,41 @@ h1, h2, h3{
 .tag-desc{
   font-size: 14px;
   color: var(--ink-soft);
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   min-height: 40px;
+}
+.tag-barcode{
+  width: 64px;
+  height: 16px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--ink) 0px, var(--ink) 1.5px,
+    transparent 1.5px, transparent 3px,
+    var(--ink) 3px, var(--ink) 3.5px,
+    transparent 3.5px, transparent 5.5px,
+    var(--ink) 5.5px, var(--ink) 6.5px,
+    transparent 6.5px, transparent 8px
+  );
+  opacity: .5;
+  margin-bottom: 4px;
+}
+.tag-sku{
+  display: block;
+  font-family: var(--font-tag);
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+  opacity: .7;
+  margin-bottom: 12px;
 }
 .tag-footer{
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
 }
 .tag-price{
   font-family: var(--font-tag);
@@ -571,22 +604,33 @@ h1, h2, h3{
 /* ============================== CUSTOMER CAROUSEL ============================== */
 .carousel{
   position: relative;
-  max-width: 420px;
+  max-width: 460px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .carousel-frame{
   position: relative;
-  aspect-ratio: 4 / 5;
+  width: 100%;
   max-height: 55vh;
+  min-height: 220px;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--white);
   box-shadow: 0 20px 40px -22px rgba(43,15,26,.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .carousel-frame img{
-  width: 100%; height: 100%;
-  object-fit: cover;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
 .carousel-caption{
   text-align: center;
@@ -639,6 +683,91 @@ h1, h2, h3{
   padding: 0;
 }
 .carousel-dots button.is-active{ background: var(--red); }
+
+/* ============================== PRODUCT DETAIL ============================== */
+.product-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  padding-bottom: 100px;
+}
+@media (max-width: 800px){
+  .product-grid{ grid-template-columns: 1fr; }
+}
+.product-main-photo{
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 20px 40px -22px rgba(43,15,26,.4);
+}
+.product-main-photo img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.product-main-photo.is-empty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #FFC3E1;
+  color: var(--pink-deep);
+  font-family: var(--font-tag);
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
+}
+.product-thumbs{
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.product-thumbs button{
+  width: 64px; height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  padding: 0;
+  background: var(--white);
+  cursor: pointer;
+}
+.product-thumbs button.is-active{ border-color: var(--red); }
+.product-thumbs img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.product-info .sold-badge{
+  position: static;
+  display: inline-block;
+  margin-bottom: 14px;
+  transform: none;
+}
+.product-price{
+  font-family: var(--font-tag);
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--red-deep);
+  margin: 10px 0 20px;
+}
+.product-price::before{ content: "$"; opacity: .7; }
+.product-desc{
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 26px;
+}
+.product-qty-row{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.back-to-shop{
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  text-decoration: underline;
+}
 
 .site-footer{
   border-top: 1px solid var(--line);

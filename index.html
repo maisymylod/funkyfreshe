@@ -123,7 +123,7 @@
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
-      <span class="tl-date">July 2026</span>
+      <span class="tl-date">August 2026</span>
       <h3>A home of its own</h3>
       <p>Five years in, Funky Freshe gets a website — and a shop where you can buy the purses directly. You're looking at it.</p>
     </div>
@@ -165,7 +165,7 @@
 
   function renderHomePreview() {
     const grid = document.getElementById("home-shop-preview");
-    const products = (window.FF_PRODUCTS || []).slice(0, 3);
+    const products = (window.FF_PRODUCTS || []).filter((p) => p.inStock).slice(0, 3);
     if (products.length === 0) return;
 
     grid.innerHTML = products.map((p) => {
@@ -173,7 +173,7 @@
         ? `<img src="${p.image}" alt="${escapeHtml(p.name)}">`
         : `<div class="placeholder" style="font-family:var(--font-tag); font-size:12px;">Photo coming soon</div>`;
       return `
-        <a href="shop.html" class="tag-card" style="display:block;">
+        <a href="product.html?id=${encodeURIComponent(p.id)}" class="tag-card" style="display:block;">
           <div class="tag-string"></div>
           <div class="tag-hole"></div>
           <div class="tag-photo ${p.image ? '' : 'is-empty'}">${photo}</div>
