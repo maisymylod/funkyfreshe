@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout · Funky Freshe</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">Funky <em>Freshe</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#story">Our Story</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li>
+        <a href="cart.html" class="cart-link" aria-label="View cart">
+          Cart <span class="cart-badge" data-count="0">0</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero wrap">
+  <span class="eyebrow">Almost there</span>
+  <h1>Checkout</h1>
+</header>
+
+<section class="wrap">
+  <div id="checkout-body"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    Funky Freshe &middot; Handmade earrings &amp; watch purses, made in Cincinnati, Ohio since 2021.
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  const body = document.getElementById("checkout-body");
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str == null ? "" : String(str);
+    return div.innerHTML;
+  }
+
+  function renderEmptyState() {
+    body.innerHTML = `
+      <div class="empty-cart">
+        <p>Your cart is empty, so there's nothing to check out yet.</p>
+        <a href="shop.html" class="btn btn-primary" style="margin-top:12px;">Browse the purses</a>
+      </div>`;
+  }
+
+  function renderForm() {
+    const items = FFCart.getLineItems();
+    const subtotal = FFCart.getSubtotal();
+
+    const receiptRows = items.map(i => `
+      <div class="receipt-item">
+        <span>${escapeHtml(i.name)} &times; ${i.qty}</span>
+        <span>$${FFCart.formatMoney(i.lineTotal)}</span>
+      </div>
+    `).join("");
+
+    body.innerHTML = `
+      <div class="checkout-grid">
+        <div class="form-card">
+          <h3 style="margin-bottom:18px;">Shipping details</h3>
+          <form id="checkout-form">
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Full name</label>
+                <input id="name" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" type="email" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="address">Shipping address</label>
+              <input id="address" required placeholder="Street, city, state, ZIP">
+            </div>
+            <div class="field">
+              <label for="notes">Order notes (optional)</label>
+              <textarea id="notes" rows="3" placeholder="Anything we should know?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Place order</button>
+          </form>
+        </div>
+
+        <div class="receipt-card">
+          <h3>Order summary</h3>
+          <div class="receipt-items">${receiptRows}</div>
+          <div class="summary-row total"><span>Total</span><span>$${FFCart.formatMoney(subtotal)}</span></div>
+          <div class="pay-note">Payment is collected through PayPal after you place your order. We'll confirm by email once it's received.</div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("checkout-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      placeOrder({
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        notes: document.getElementById("notes").value.trim()
+      });
+    });
+  }
+
+  function placeOrder(customer) {
+    const items = FFCart.getLineItems();
+    const total = FFCart.getSubtotal();
+    const orderId = "FF-" + Date.now().toString().slice(-6);
+    const cfg = window.FF_CONFIG || {};
+
+    const paypalAmount = total.toFixed(2);
+    const paypalUrl = `https://paypal.me/${encodeURIComponent(cfg.PAYPAL_USERNAME || "")}/${paypalAmount}`;
+
+    const itemLines = items.map(i => `${i.name} x${i.qty} — $${FFCart.formatMoney(i.lineTotal)}`).join("%0D%0A");
+    const mailBody =
+      `Order ${orderId}%0D%0A%0D%0A` +
+      `${itemLines}%0D%0A%0D%0ATotal: $${FFCart.formatMoney(total)}%0D%0A%0D%0A` +
+      `Name: ${customer.name}%0D%0AEmail: ${customer.email}%0D%0AShip to: ${customer.address}%0D%0ANotes: ${customer.notes || "—"}`;
+    const mailUrl = `mailto:${encodeURIComponent(cfg.CONTACT_EMAIL || "")}?subject=${encodeURIComponent("Order " + orderId)}&body=${mailBody}`;
+
+    FFCart.clearCart();
+
+    body.innerHTML = `
+      <div class="order-confirm">
+        <span class="stamp">Order placed</span>
+        <h2>Thanks, ${escapeHtml(customer.name.split(" ")[0] || "friend")}!</h2>
+        <p class="order-id">Order ${orderId} &middot; Total $${FFCart.formatMoney(total)}</p>
+        <p style="max-width:440px; margin:18px auto; color:var(--ink-soft);">
+          Two quick steps to finish: send your payment on PayPal, then email us your order so we can match it up.
+        </p>
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:10px;">
+          <a href="${paypalUrl}" target="_blank" rel="noopener" class="btn btn-primary">Pay $${paypalAmount} with PayPal</a>
+          <a href="${mailUrl}" class="btn btn-outline">Email order details</a>
+        </div>
+        <a href="index.html" class="btn-ghost" style="display:inline-block; margin-top:24px;">Back to home</a>
+      </div>
+    `;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (FFCart.getLineItems().length === 0) {
+      renderEmptyState();
+    } else {
+      renderForm();
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your cart · Funky Freshe</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">Funky <em>Freshe</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#story">Our Story</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li>
+        <a href="cart.html" class="cart-link active" aria-label="View cart">
+          Cart <span class="cart-badge" data-count="0">0</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero wrap">
+  <span class="eyebrow">Your bag</span>
+  <h1>Your cart</h1>
+</header>
+
+<section class="wrap" style="padding-bottom:100px;">
+  <div id="cart-body"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    Funky Freshe &middot; Handmade earrings &amp; watch purses, made in Cincinnati, Ohio since 2021.
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  function renderCart() {
+    const body = document.getElementById("cart-body");
+    const items = FFCart.getLineItems();
+
+    if (items.length === 0) {
+      body.innerHTML = `
+        <div class="empty-cart">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.6L21 8H6" stroke="#FF3D8A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9" cy="21" r="1.4" fill="#E8402C"/>
+            <circle cx="17" cy="21" r="1.4" fill="#E8402C"/>
+          </svg>
+          <p>Your cart is empty.</p>
+          <a href="shop.html" class="btn btn-primary" style="margin-top:12px;">Browse the purses</a>
+        </div>`;
+      return;
+    }
+
+    const rows = items.map((item) => `
+      <div class="cart-row" data-id="${item.id}">
+        <div class="thumb">
+          ${item.image ? `<img src="${item.image}" alt="${escapeHtml(item.name)}">` : `<span class="placeholder">🎀</span>`}
+        </div>
+        <div>
+          <h4>${escapeHtml(item.name)}</h4>
+          <span class="unit-price">$${FFCart.formatMoney(item.price)} each</span>
+          <div class="qty-control">
+            <button class="qty-minus" aria-label="Decrease quantity">&minus;</button>
+            <span>${item.qty}</span>
+            <button class="qty-plus" aria-label="Increase quantity">&plus;</button>
+          </div>
+        </div>
+        <div>
+          <div class="cart-line-total">$${FFCart.formatMoney(item.lineTotal)}</div>
+          <a href="#" class="remove-link">Remove</a>
+        </div>
+      </div>
+    `).join("");
+
+    const subtotal = FFCart.getSubtotal();
+
+    body.innerHTML = `
+      <div style="display:grid; grid-template-columns: 1.4fr .8fr; gap:32px; align-items:start;">
+        <div class="cart-list">${rows}</div>
+        <div class="cart-summary">
+          <div class="summary-row"><span>Subtotal</span><span>$${FFCart.formatMoney(subtotal)}</span></div>
+          <div class="summary-row"><span>Shipping</span><span>Calculated at checkout</span></div>
+          <div class="summary-row total"><span>Total</span><span>$${FFCart.formatMoney(subtotal)}</span></div>
+          <a href="checkout.html" class="btn btn-primary btn-block" style="margin-top:20px; text-align:center;">Go to checkout</a>
+          <a href="shop.html" class="btn-ghost" style="display:block; text-align:center; margin-top:10px;">Continue shopping</a>
+        </div>
+      </div>
+    `;
+
+    body.querySelectorAll(".qty-plus").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.closest(".cart-row").dataset.id;
+        const current = FFCart.getLineItems().find(i => i.id === id);
+        FFCart.setQty(id, (current ? current.qty : 0) + 1);
+        renderCart();
+      });
+    });
+    body.querySelectorAll(".qty-minus").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.closest(".cart-row").dataset.id;
+        const current = FFCart.getLineItems().find(i => i.id === id);
+        FFCart.setQty(id, (current ? current.qty : 0) - 1);
+        renderCart();
+      });
+    });
+    body.querySelectorAll(".remove-link").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = link.closest(".cart-row").dataset.id;
+        FFCart.removeItem(id);
+        renderCart();
+      });
+    });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str == null ? "" : String(str);
+    return div.innerHTML;
+  }
+
+  document.addEventListener("DOMContentLoaded", renderCart);
+</script>
+</body>
+</html>
