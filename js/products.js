@@ -65,5 +65,53 @@ window.FF_PRODUCTS = [
     description: "Edit me: a short description of this purse.",
     image: "",
     inStock: true
+  },
+  {
+    id: "purse-007",
+    name: "Edit me: purse name",
+    price: 0,
+    description: "Edit me: a short description of this purse.",
+    image: "",
+    inStock: true
+  },
+  {
+    id: "purse-008",
+    name: "Edit me: purse name",
+    price: 0,
+    description: "Edit me: a short description of this purse.",
+    image: "",
+    inStock: true
+  },
+  {
+    id: "purse-009",
+    name: "Edit me: purse name",
+    price: 0,
+    description: "Edit me: a short description of this purse.",
+    image: "",
+    inStock: true
+  },
+  {
+    id: "purse-010",
+    name: "Edit me: purse name",
+    price: 0,
+    description: "Edit me: a short description of this purse.",
+    image: "",
+    inStock: true
+  },
+  {
+    id: "purse-011",
+    name: "Edit me: purse name",
+    price: 0,
+    description: "Edit me: a short description of this purse.",
+    image: "",
+    inStock: true
+  },
+  {
+    id: "purse-012",
+    name: "Edit me: purse name",
+    price: 0,
+    description: "Edit me: a short description of this purse.",
+    image: "",
+    inStock: true
   }
 ];

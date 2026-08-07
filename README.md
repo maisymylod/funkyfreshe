@@ -1,88 +1,57 @@
-# Funky Freshe — shop, cart & checkout
+# Funky Freshe — shop, cart, checkout, story, customers & contact
 
-New pages built to match your existing site, in pink + red, with the timeline
-kept intact.
+## Pages
 
-## What's in here
-
-- `index.html` — home page (rebuilt with a live 3-item shop preview + timeline)
-- `shop.html` — the purse grid, in blank/editable "price tag" cards
+- `index.html` — home page: hero photo, shop preview, full timeline, maker bio, contact teaser
+- `story.html` — the full "Our Story" timeline + maker bio, as its own page
+- `shop.html` — the purse grid (3 rows of 4), editable "price tag" cards
 - `cart.html` — shopping cart
 - `checkout.html` — shipping form + PayPal-based checkout
-- `css/main.css` — all styling (colors, fonts, layout)
-- `js/products.js` — **this is your product list.** Edit this to add purses.
-- `js/config.js` — **your PayPal username + contact email.** Edit this once.
-- `js/cart.js` — cart logic, you shouldn't need to touch this
+- `customers.html` — past customer photo gallery with arrow/dot navigation
+- `contact.html` — inquiry form (opens an email) + Instagram link
 
-## 1. Add your products (the "backend")
+## The "backend" files you'll edit
 
-Open `js/products.js` in any text editor (even GitHub's web editor). Each
-purse is one block like this:
+- `js/products.js` — your purse listings. Edit name, price, description, image, inStock.
+- `js/customers.js` — the past-customer gallery photos + captions.
+- `js/config.js` — your PayPal username + the email inquiries/orders get sent to.
 
-```js
-{
-  id: "purse-001",
-  name: "Vintage Seiko Crossbody",
-  price: 48,
-  description: "One-of-a-kind, made from a 1970s Seiko watch face.",
-  image: "images/products/purse-001.jpg",
-  inStock: true
-}
-```
+Same editing method as before: open the file on GitHub, click the pencil icon,
+edit, commit.
 
-- **name / price / description**: edit freely, any time.
-- **image**: leave as `""` to show a blank placeholder square. Once you have
-  a photo, drop the file in `images/products/` and put its filename here.
-- **inStock**: set to `false` to show a "Sold" tag and disable the cart
-  button — good for one-of-a-kind pieces once they sell.
-- To add a 7th purse, copy a whole `{ ... },` block and paste it before the
-  closing `];`. To remove one, delete its block.
+## Adding a customer photo
 
-No other file needs to change when you update products.
+1. Add the image file to `images/customers/`
+2. In `js/customers.js`, copy one `{ image: ..., caption: ... }` block, paste
+   it before the closing `]`, and point it at your new file
+3. Commit — it now shows up in the carousel automatically
 
-## 2. Set up payment
+## What changed in this pass
 
-Open `js/config.js`:
+- **Font**: headings and body text now use Times New Roman (system serif),
+  in place of the earlier sans-serif fonts.
+- **Background**: page background is now pink, with a subtle scattered dot
+  texture in red (CSS only, not an image) across the whole site.
+- **Shop page**: fixed at 4 columns × 3 rows (12 purse slots) on desktop,
+  narrowing to 2 columns then 1 on smaller screens.
+- **Home page**: now also includes the full timeline and "Meet the maker"
+  section (previously only on `story.html` — both pages carry it now), and
+  the hero photo up top was swapped to your photo in the white skirt.
+- **Contact**: split out to its own page with a real inquiry form. Submitting
+  opens the visitor's email app with their message pre-filled, addressed to
+  the `CONTACT_EMAIL` in `js/config.js`. There's no backend on GitHub Pages,
+  so this "opens an email" pattern is the practical substitute for a live
+  form submission — same idea as the checkout flow.
+- **Past Customers**: new gallery page. Pre-loaded with photos you uploaded —
+  a couple of them happen to show your watch purses in action (the winery
+  photo and the two-women photo), plus several of your custom banners.
+- **Maker bio**: updated to rising Cornell senior, Animal Science major,
+  double minor in Business and Communication (was previously listed as a
+  junior with a different minor combo).
 
-```js
-window.FF_CONFIG = {
-  PAYPAL_USERNAME: "your-paypal-username",   // from paypal.me/yourusername
-  CONTACT_EMAIL: "hello@funkyfreshe.com"
-};
-```
+## Getting it live
 
-Put in your real PayPal.me username and the email you want order details
-sent to.
-
-**How checkout actually works:** this is a GitHub Pages site, which means
-there's no server to securely process card payments directly. So checkout
-works like this instead:
-1. Customer fills in their shipping info and hits "Place order."
-2. They get a PayPal button pre-filled with the exact total, and an
-   "Email order details" button that opens their email app with an itemized
-   summary addressed to you.
-3. You match the PayPal payment against the emailed order and ship it out.
-
-This is the same pattern a lot of small handmade shops use without a full
-e-commerce backend. If you outgrow it later, upgrading to something like
-Shopify or a Stripe-based checkout is a reasonable next step — happy to help
-with that when the time comes.
-
-## 3. Add these files to your GitHub repo
-
-1. Go to your `funkyfreshe` repo on GitHub.
-2. Upload/replace: `index.html`, `shop.html`, `cart.html`, `checkout.html`,
-   and the `css/` and `js/` folders (drag the whole folders into GitHub's
-   "Add file → Upload files").
-3. Your existing `images/` folder is already referenced by the new pages —
-   no changes needed there.
-4. Commit. GitHub Pages will redeploy automatically in a minute or two.
-
-## Notes
-
-- The cart is stored in each visitor's own browser (not shared between
-  people), so it's just for holding items on the way to checkout.
-- "Our Story," "Meet the maker," and "Contact" content on the home page
-  carries over from your current site.
-- Colors and fonts all live at the top of `css/main.css` under `:root` if
-  you ever want to adjust the pink/red palette.
+Same as before — upload/replace the changed files and folders in your GitHub
+repo (`index.html`, `story.html`, `shop.html`, `customers.html`,
+`contact.html`, `cart.html`, `checkout.html`, and the `css/`, `js/`,
+`images/` folders) and commit. GitHub Pages redeploys automatically.

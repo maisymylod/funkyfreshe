@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact · Funky Freshe</title>
+<meta name="description" content="Get in touch with Funky Freshe — send an inquiry or find us on Instagram.">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="logo">Funky <em>Freshe</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="customers.html">Customers</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li>
+        <a href="cart.html" class="cart-link" aria-label="View cart">
+          Cart <span class="cart-badge" data-count="0">0</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero wrap">
+  <span class="eyebrow">Say hi</span>
+  <h1>Get in touch</h1>
+  <p>Have a question about an order, a custom banner, or anything else? Send an inquiry below, or find us on Instagram.</p>
+</header>
+
+<section class="wrap" style="padding-bottom:100px;">
+  <div class="checkout-grid" style="grid-template-columns: 1fr .8fr;">
+    <div class="form-card">
+      <h3 style="margin-bottom:18px;">Send an inquiry</h3>
+      <form id="contact-form">
+        <div class="field-row">
+          <div class="field">
+            <label for="c-name">Your name</label>
+            <input id="c-name" required>
+          </div>
+          <div class="field">
+            <label for="c-email">Your email</label>
+            <input id="c-email" type="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="c-message">What's your inquiry about?</label>
+          <textarea id="c-message" rows="5" required placeholder="Tell us what you need..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send inquiry</button>
+      </form>
+      <div id="contact-confirm" style="display:none; text-align:center; padding:20px 0;">
+        <p style="font-weight:600;">Thanks — your email app should be open with your message ready to send.</p>
+        <p style="color:var(--ink-soft); font-size:14px;">If it didn't open, email us directly instead.</p>
+      </div>
+    </div>
+
+    <div class="receipt-card" style="text-align:center;">
+      <h3>Find us on Instagram</h3>
+      <p style="color:var(--ink-soft); font-size:14.5px; margin-bottom:20px;">The fastest way to reach Funky Freshe. DM us any time.</p>
+      <a href="https://www.instagram.com/funkyfreshe" class="btn btn-primary" style="width:100%; justify-content:center;">Message @funkyfreshe</a>
+      <div class="pay-note" style="margin-top:22px; text-align:left;">
+        You can also catch us in person at the Cincinnati City Flea and the Cornell Creators Market.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    Funky Freshe &middot; Handmade earrings &amp; watch purses, made in Cincinnati, Ohio since 2021.
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("c-name").value.trim();
+    const email = document.getElementById("c-email").value.trim();
+    const message = document.getElementById("c-message").value.trim();
+    const cfg = window.FF_CONFIG || {};
+
+    const body =
+      `${message}%0D%0A%0D%0A` +
+      `From: ${name}%0D%0AEmail: ${email}`;
+    const mailUrl = `mailto:${encodeURIComponent(cfg.CONTACT_EMAIL || "")}?subject=${encodeURIComponent("Website inquiry from " + name)}&body=${body}`;
+
+    window.location.href = mailUrl;
+
+    this.style.display = "none";
+    document.getElementById("contact-confirm").style.display = "block";
+  });
+</script>
+</body>
+</html>
