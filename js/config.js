@@ -12,5 +12,5 @@
 
 window.FF_CONFIG = {
   PAYPAL_USERNAME: "your-paypal-username",
-  CONTACT_EMAIL: "hello@funkyfreshe.com"
+  CONTACT_EMAIL: "ssn56@cornell.edu"
 };

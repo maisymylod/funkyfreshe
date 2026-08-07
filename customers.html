@@ -41,7 +41,6 @@
     <p class="carousel-caption" id="carousel-caption"></p>
     <div class="carousel-controls">
       <button class="carousel-arrow" id="carousel-prev" aria-label="Previous photo">&larr;</button>
-      <span class="carousel-counter" id="carousel-counter">1 / 1</span>
       <button class="carousel-arrow" id="carousel-next" aria-label="Next photo">&rarr;</button>
     </div>
     <div class="carousel-dots" id="carousel-dots"></div>
@@ -65,7 +64,6 @@
 
     const img = document.getElementById("carousel-img");
     const caption = document.getElementById("carousel-caption");
-    const counter = document.getElementById("carousel-counter");
     const dotsWrap = document.getElementById("carousel-dots");
     const prevBtn = document.getElementById("carousel-prev");
     const nextBtn = document.getElementById("carousel-next");
@@ -79,7 +77,6 @@
       img.src = photo.image;
       img.alt = photo.caption || "Funky Freshe customer photo";
       caption.textContent = photo.caption || "";
-      counter.textContent = (index + 1) + " / " + photos.length;
       dotsWrap.querySelectorAll("button").forEach((dot, i) => {
         dot.classList.toggle("is-active", i === index);
       });

@@ -135,6 +135,10 @@
       `Name: ${customer.name}%0D%0AEmail: ${customer.email}%0D%0AShip to: ${customer.address}%0D%0ANotes: ${customer.notes || "—"}`;
     const mailUrl = `mailto:${encodeURIComponent(cfg.CONTACT_EMAIL || "")}?subject=${encodeURIComponent("Order " + orderId)}&body=${mailBody}`;
 
+    // Open the order email right away so you get notified even if the
+    // customer doesn't click the "Email order details" button below.
+    window.location.href = mailUrl;
+
     FFCart.clearCart();
 
     body.innerHTML = `
