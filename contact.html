@@ -67,6 +67,11 @@
       <div class="pay-note" style="margin-top:22px; text-align:left;">
         You can also catch us in person at the Cincinnati City Flea and the Cornell Creators Market.
       </div>
+      <div style="border-top:1px dashed var(--line); margin-top:24px; padding-top:22px;">
+        <h3 style="font-size:16px;">Want a custom banner?</h3>
+        <p style="color:var(--ink-soft); font-size:14px; margin:10px 0 16px;">Hand-painted celebration banners are also available — the request form is linked in our Instagram bio, or tap below.</p>
+        <a id="banner-form-link" href="#" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%; justify-content:center;">Request a Custom Banner</a>
+      </div>
     </div>
   </div>
 </section>
@@ -97,6 +102,13 @@
 
     this.style.display = "none";
     document.getElementById("contact-confirm").style.display = "block";
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const link = document.getElementById("banner-form-link");
+    if (link && window.FF_CONFIG && window.FF_CONFIG.CUSTOM_BANNER_FORM_URL) {
+      link.href = window.FF_CONFIG.CUSTOM_BANNER_FORM_URL;
+    }
   });
 </script>
 </body>

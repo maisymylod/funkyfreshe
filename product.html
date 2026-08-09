@@ -30,6 +30,11 @@
   <div id="product-body"></div>
 </section>
 
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button id="lightbox-close" class="lightbox-close" aria-label="Close zoomed photo">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <footer class="site-footer">
   <div class="wrap">
     Funky Freshe &middot; Handmade earrings &amp; watch purses, made in Cincinnati, Ohio since 2021.
@@ -50,6 +55,14 @@
     return `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/>
       <path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7" stroke="currentColor" stroke-width="1.6"/>
+    </svg>`;
+  }
+
+  function zoomSVG() {
+    return `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M15.2 15.2L20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M10.5 8v5M8 10.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
     </svg>`;
   }
 
@@ -74,7 +87,8 @@
 
     const photos = [product.image, ...(product.gallery || [])].filter(Boolean);
     const mainPhotoHtml = photos.length
-      ? `<img id="product-main-img" src="${photos[0]}" alt="${escapeHtml(product.name)}">`
+      ? `<img id="product-main-img" src="${photos[0]}" alt="${escapeHtml(product.name)}">
+         <button id="zoom-btn" class="zoom-btn" type="button" aria-label="Zoom in on photo">${zoomSVG()} Zoom</button>`
       : `<div class="placeholder">${placeholderSVG()}<br>Add photos in js/products.js</div>`;
 
     const thumbsHtml = photos.length > 1
@@ -123,6 +137,16 @@
       });
     }
 
+    const zoomBtn = document.getElementById("zoom-btn");
+    if (zoomBtn) {
+      zoomBtn.addEventListener("click", () => openLightbox());
+    }
+    const mainImg = document.getElementById("product-main-img");
+    if (mainImg) {
+      mainImg.style.cursor = "zoom-in";
+      mainImg.addEventListener("click", () => openLightbox());
+    }
+
     let qty = 1;
     const qtyValue = document.getElementById("qty-value");
     document.getElementById("qty-minus").addEventListener("click", () => {
@@ -145,6 +169,26 @@
   }
 
   document.addEventListener("DOMContentLoaded", renderProduct);
+
+  function openLightbox() {
+    const mainImg = document.getElementById("product-main-img");
+    if (!mainImg) return;
+    document.getElementById("lightbox-img").src = mainImg.src;
+    document.getElementById("lightbox-img").alt = mainImg.alt;
+    document.getElementById("lightbox").classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox() {
+    document.getElementById("lightbox").classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+  document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+  document.getElementById("lightbox").addEventListener("click", (e) => {
+    if (e.target.id === "lightbox") closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
 </script>
 </body>
 </html>
