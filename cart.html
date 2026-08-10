@@ -28,12 +28,15 @@
       <li><a href="shop.html">Shop</a></li>
       <li><a href="customers.html">Customers</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li>
-        <a href="cart.html" class="cart-link active" aria-label="View cart">
-          Cart <span class="cart-badge" data-count="0">0</span>
-        </a>
-      </li>
     </ul>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-link active" aria-label="View cart">
+        Cart <span class="cart-badge" data-count="0">0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -55,6 +58,7 @@
 <script src="js/config.js"></script>
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/nav.js"></script>
 <script>
   function renderCart() {
     const body = document.getElementById("cart-body");
@@ -93,7 +97,7 @@
     const subtotal = FFCart.getSubtotal();
 
     body.innerHTML = `
-      <div style="display:grid; grid-template-columns: 1.4fr .8fr; gap:32px; align-items:start;">
+      <div class="cart-layout">
         <div class="cart-list">${rows}</div>
         <div class="cart-summary">
           <div class="summary-row"><span>Subtotal</span><span>$${FFCart.formatMoney(subtotal)}</span></div>

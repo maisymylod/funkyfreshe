@@ -112,3 +112,26 @@ If you ever want to change this image:
 Note: these preview images can be cached by Facebook/Instagram/iMessage for
 a while after you change them — if an old version still shows up, that's
 just caching on their end, not a problem with the file.
+
+## Mobile responsiveness
+
+The site now has a dedicated mobile layout rather than just a shrunken
+desktop view:
+
+- **Navigation** collapses into a hamburger menu below ~860px wide. The
+  cart button always stays visible; the other links live behind the menu
+  icon, opening as a full-width dropdown with large, easy-to-tap rows.
+- **Grids and two-column layouts** (shop, cart, checkout, contact, product
+  pages) stack into a single column on narrower screens instead of
+  squeezing side by side.
+- **Forms** stack their fields vertically on small phones so nothing feels
+  cramped.
+- **Images** are set to never force horizontal scrolling, even inside
+  flexible side-by-side layouts (like the two July 2024 timeline photos).
+
+If you ever add a new section with a multi-column layout, the pattern to
+copy is: give it its own class (not an inline `style="grid-template-columns:
+..."`), then add a `@media (max-width: ...)` rule in `css/main.css` that
+switches it to a single column. Inline styles can't be overridden by media
+queries, which was actually the cause of a couple of the squished-on-mobile
+issues fixed in this pass.

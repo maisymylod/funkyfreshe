@@ -29,12 +29,15 @@
       <li><a href="shop.html">Shop</a></li>
       <li><a href="customers.html">Customers</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li>
-        <a href="cart.html" class="cart-link" aria-label="View cart">
-          Cart <span class="cart-badge" data-count="0">0</span>
-        </a>
-      </li>
     </ul>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-link" aria-label="View cart">
+        Cart <span class="cart-badge" data-count="0">0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -80,8 +83,8 @@
       <h3>Third summer + printed sheets</h3>
       <p>A third summer at the Flea, and a new trick: printed shrink-film designs (hello, Eras Tour) that let the collection get a little louder.</p>
       <div style="display:flex; gap:10px; margin-top:14px;">
-        <img src="images/timeline/tl-july2024-eras-earrings.jpg" alt="Shrinky-dink Eras Tour earrings on a card" style="width:50%; border-radius:12px; box-shadow:0 10px 24px -14px rgba(43,15,26,.4);">
-        <img src="images/timeline/tl-july2024-booth-musichall.jpg" alt="Samantha at the earring booth in front of Cincinnati Music Hall" style="width:50%; border-radius:12px; box-shadow:0 10px 24px -14px rgba(43,15,26,.4);">
+        <img src="images/timeline/tl-july2024-eras-earrings.jpg" alt="Shrinky-dink Eras Tour earrings on a card" style="width:50%; min-width:0; border-radius:12px; box-shadow:0 10px 24px -14px rgba(43,15,26,.4);">
+        <img src="images/timeline/tl-july2024-booth-musichall.jpg" alt="Samantha at the earring booth in front of Cincinnati Music Hall" style="width:50%; min-width:0; border-radius:12px; box-shadow:0 10px 24px -14px rgba(43,15,26,.4);">
       </div>
     </div>
     <div class="tl-item">
@@ -145,5 +148,6 @@
 <script src="js/config.js"></script>
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/nav.js"></script>
 </body>
 </html>

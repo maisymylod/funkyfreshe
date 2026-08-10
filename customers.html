@@ -29,12 +29,15 @@
       <li><a href="shop.html">Shop</a></li>
       <li><a href="customers.html" class="active">Customers</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li>
-        <a href="cart.html" class="cart-link" aria-label="View cart">
-          Cart <span class="cart-badge" data-count="0">0</span>
-        </a>
-      </li>
     </ul>
+    <div class="nav-right">
+      <a href="cart.html" class="cart-link" aria-label="View cart">
+        Cart <span class="cart-badge" data-count="0">0</span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -68,6 +71,7 @@
 <script src="js/customers.js"></script>
 <script src="js/products.js"></script>
 <script src="js/cart.js"></script>
+<script src="js/nav.js"></script>
 <script>
   (function () {
     const photos = window.FF_CUSTOMERS || [];
