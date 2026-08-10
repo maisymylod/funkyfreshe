@@ -36,9 +36,9 @@ body{
   margin: 0;
   background-color: var(--cream);
   background-image: repeating-linear-gradient(
-    135deg,
+    90deg,
     var(--cream) 0px, var(--cream) 34px,
-    #FF6E92 34px, #FF6E92 68px
+    #B31B1B 34px, #B31B1B 68px
   );
   color: var(--ink);
   font-family: var(--font-body);
@@ -69,7 +69,7 @@ h1, h2, h3{
   font-size: 12px;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--red-deep);
+  color: var(--ink);
   display: inline-flex;
   align-items: center;
   gap: 8px;
