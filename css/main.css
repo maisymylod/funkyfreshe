@@ -38,7 +38,7 @@ body{
   background-image: repeating-linear-gradient(
     135deg,
     var(--cream) 0px, var(--cream) 34px,
-    #FFA9C4 34px, #FFA9C4 68px
+    #FF6E92 34px, #FF6E92 68px
   );
   color: var(--ink);
   font-family: var(--font-body);
