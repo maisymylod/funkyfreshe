@@ -35,10 +35,12 @@ html{ scroll-behavior: smooth; }
 body{
   margin: 0;
   background-color: var(--cream);
-  background-image: url('../images/bg-plaid-tile.jpg');
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: 100% 100%;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 5px, #B31B1B 5px 7px),
+    repeating-linear-gradient(90deg, transparent 0 5px, #B31B1B 5px 7px);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, right top;
+  background-size: 22px 100%, 22px 100%;
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;
