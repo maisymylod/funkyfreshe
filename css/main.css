@@ -280,6 +280,20 @@ h1, h2, h3{
   .page-hero p{ font-size: 15.5px; }
 }
 
+/* A soft pink "bubble" behind text blocks that sit directly on the
+   striped background, so headings and paragraphs stay easy to read. */
+.text-bubble{
+  background: #FFEAF2;
+  border-radius: 26px;
+  padding: 40px 44px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 2px 0 var(--line), 0 18px 34px -20px rgba(43,15,26,.28);
+}
+@media (max-width: 640px){
+  .text-bubble{ padding: 28px 24px; border-radius: 20px; }
+}
+
 /* ============================== PRODUCT GRID (swing tags) ============================== */
 .shop-grid{
   display: grid;
@@ -499,6 +513,14 @@ h1, h2, h3{
 }
 .tl-item h3{ font-size: 20px; margin: 6px 0 8px; }
 .tl-item p{ color: var(--ink-soft); font-size: 14.5px; margin: 0; }
+.tl-card{
+  display: inline-block;
+  background: #FFEAF2;
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: 0 2px 0 var(--line), 0 12px 24px -16px rgba(43,15,26,.25);
+  max-width: 100%;
+}
 .tl-item img{
   margin-top: 14px;
   border-radius: 12px;
