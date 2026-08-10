@@ -36,11 +36,11 @@ body{
   margin: 0;
   background-color: var(--cream);
   background-image:
-    repeating-linear-gradient(90deg, transparent 0 5px, #B31B1B 5px 7px),
-    repeating-linear-gradient(90deg, transparent 0 5px, #B31B1B 5px 7px);
+    repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 4px, transparent 4px, transparent 14px),
+    repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 4px, transparent 4px, transparent 14px);
   background-repeat: no-repeat, no-repeat;
   background-position: left top, right top;
-  background-size: 22px 100%, 22px 100%;
+  background-size: 98px 100%, 98px 100%;
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;
