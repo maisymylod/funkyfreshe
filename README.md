@@ -96,3 +96,19 @@ Upload/replace the changed files and folders in your GitHub repo
 (`index.html`, `story.html`, `shop.html`, `product.html`, `customers.html`,
 `contact.html`, `cart.html`, `checkout.html`, and the `css/`, `js/`,
 `images/` folders) and commit. GitHub Pages redeploys automatically.
+
+## Link preview image (what shows up when you share the link)
+
+Every page now has proper social-share tags pointing at
+`images/og-image.jpg` — a branded card with "Funkyfreshe" on the striped
+background, sized correctly (1200×630) so phones and apps show it cleanly
+instead of grabbing a random, oddly-cropped photo from the page.
+
+If you ever want to change this image:
+1. Replace `images/og-image.jpg` with a new one (same 1200×630 size works best)
+2. Keep the same filename, or update the `og:image` / `twitter:image` lines
+   near the top of each page if you rename it
+
+Note: these preview images can be cached by Facebook/Instagram/iMessage for
+a while after you change them — if an old version still shows up, that's
+just caching on their end, not a problem with the file.
