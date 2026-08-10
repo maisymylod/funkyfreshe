@@ -37,7 +37,7 @@ body{
   background-color: var(--cream);
   background-image: url('../images/bg-plaid-tile.jpg');
   background-repeat: repeat;
-  background-size: 280px 370px;
+  background-size: 280px 374px;
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;

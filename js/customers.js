@@ -14,10 +14,6 @@
 
 window.FF_CUSTOMERS = [
   {
-    image: "images/customers/customer-01-watch-purses-duo.jpg",
-    caption: "Two watch purses out for the night."
-  },
-  {
     image: "images/customers/customer-04-winery-watch-purse.jpg",
     caption: "A watch purse out at the vineyard."
   },
