@@ -29,8 +29,15 @@
   function addItem(id, qty) {
     qty = qty || 1;
     const cart = readCart();
-    cart[id] = (cart[id] || 0) + qty;
+    // Every purse is one-of-a-kind — only ever one to sell, so cap at 1
+    // no matter how many times "Add to cart" gets clicked.
+    cart[id] = 1;
     writeCart(cart);
+  }
+
+  function isInCart(id) {
+    const cart = readCart();
+    return !!cart[id];
   }
 
   function setQty(id, qty) {
@@ -38,7 +45,7 @@
     if (qty <= 0) {
       delete cart[id];
     } else {
-      cart[id] = qty;
+      cart[id] = 1; // one-of-a-kind — quantity can only ever be 0 or 1
     }
     writeCart(cart);
   }
@@ -102,7 +109,8 @@
     getCount,
     getSubtotal,
     formatMoney,
-    updateBadges
+    updateBadges,
+    isInCart
   };
 
   document.addEventListener("DOMContentLoaded", updateBadges);

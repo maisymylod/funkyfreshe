@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Purse · Funky Freshe</title>
+<title>Purse · Funkyfreshe</title>
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="wrap">
-    <a href="index.html" class="logo">Funky <em>Freshe</em></a>
+    <a href="index.html" class="logo">Funky<em>freshe</em></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="story.html">Our Story</a></li>
@@ -37,7 +37,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    Funky Freshe &middot; Handmade earrings &amp; watch purses, made in Cincinnati, Ohio since 2021.
+    Funkyfreshe &middot; Handmade earrings &amp; watch purses, made in New York since 2021.
   </div>
 </footer>
 
@@ -98,7 +98,8 @@
           </button>`).join("")}</div>`
       : "";
 
-    document.title = product.name + " · Funky Freshe";
+    document.title = product.name + " · Funkyfreshe";
+    const isInCart = FFCart.isInCart(product.id);
 
     body.innerHTML = `
       <div class="product-grid">
@@ -112,15 +113,8 @@
           <h1 style="margin-top:8px;">${escapeHtml(product.name)}</h1>
           <div class="product-price">${Number(product.price || 0).toFixed(2)}</div>
           <p class="product-desc">${escapeHtml(product.description || "No description yet — add one in js/products.js.")}</p>
-          <div class="product-qty-row">
-            <div class="qty-control">
-              <button id="qty-minus" type="button">&minus;</button>
-              <span id="qty-value">1</span>
-              <button id="qty-plus" type="button">&plus;</button>
-            </div>
-          </div>
           <button id="product-add" class="btn btn-primary btn-block" ${product.inStock ? "" : "disabled"}>
-            ${product.inStock ? "Add to cart" : "Sold out"}
+            ${!product.inStock ? "Sold out" : (isInCart ? "In cart ✓" : "Add to cart")}
           </button>
           <a href="shop.html" class="back-to-shop">&larr; Back to all purses</a>
         </div>
@@ -147,24 +141,12 @@
       mainImg.addEventListener("click", () => openLightbox());
     }
 
-    let qty = 1;
-    const qtyValue = document.getElementById("qty-value");
-    document.getElementById("qty-minus").addEventListener("click", () => {
-      qty = Math.max(1, qty - 1);
-      qtyValue.textContent = qty;
-    });
-    document.getElementById("qty-plus").addEventListener("click", () => {
-      qty += 1;
-      qtyValue.textContent = qty;
-    });
-
     const addBtn = document.getElementById("product-add");
     addBtn.addEventListener("click", () => {
       if (addBtn.disabled) return;
-      FFCart.addItem(product.id, qty);
-      const original = addBtn.textContent;
-      addBtn.textContent = "Added ✓";
-      setTimeout(() => { addBtn.textContent = original; }, 1200);
+      if (FFCart.isInCart(product.id)) return; // one-of-a-kind — already in the cart
+      FFCart.addItem(product.id, 1);
+      addBtn.textContent = "In cart ✓";
     });
   }
 

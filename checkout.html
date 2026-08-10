@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout · Funky Freshe</title>
+<title>Checkout · Funkyfreshe</title>
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="wrap">
-    <a href="index.html" class="logo">Funky <em>Freshe</em></a>
+    <a href="index.html" class="logo">Funky<em>freshe</em></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="story.html">Our Story</a></li>
@@ -37,7 +37,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    Funky Freshe &middot; Handmade earrings &amp; watch purses, made in Cincinnati, Ohio since 2021.
+    Funkyfreshe &middot; Handmade earrings &amp; watch purses, made in New York since 2021.
   </div>
 </footer>
 
@@ -76,7 +76,7 @@
 
     const receiptRows = items.map(i => `
       <div class="receipt-item">
-        <span>${escapeHtml(i.name)} &times; ${i.qty}</span>
+        <span>${escapeHtml(i.name)}</span>
         <span>$${FFCart.formatMoney(i.lineTotal)}</span>
       </div>
     `).join("");
@@ -133,7 +133,7 @@
 
   function sendOrderEmail(customer, orderId, totals) {
     const items = FFCart.getLineItems();
-    const itemLines = items.map(i => `${i.name} x${i.qty} — $${FFCart.formatMoney(i.lineTotal)}`).join("%0D%0A");
+    const itemLines = items.map(i => `${i.name} — $${FFCart.formatMoney(i.lineTotal)}`).join("%0D%0A");
     const mailBody =
       `Order ${orderId}%0D%0A%0D%0A` +
       `${itemLines}%0D%0A%0D%0A` +

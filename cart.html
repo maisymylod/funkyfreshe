@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your cart · Funky Freshe</title>
+<title>Your cart · Funkyfreshe</title>
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="wrap">
-    <a href="index.html" class="logo">Funky <em>Freshe</em></a>
+    <a href="index.html" class="logo">Funky<em>freshe</em></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="story.html">Our Story</a></li>
@@ -37,7 +37,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    Funky Freshe &middot; Handmade earrings &amp; watch purses, made in Cincinnati, Ohio since 2021.
+    Funkyfreshe &middot; Handmade earrings &amp; watch purses, made in New York since 2021.
   </div>
 </footer>
 
@@ -70,12 +70,7 @@
         </div>
         <div>
           <h4>${escapeHtml(item.name)}</h4>
-          <span class="unit-price">$${FFCart.formatMoney(item.price)} each</span>
-          <div class="qty-control">
-            <button class="qty-minus" aria-label="Decrease quantity">&minus;</button>
-            <span>${item.qty}</span>
-            <button class="qty-plus" aria-label="Increase quantity">&plus;</button>
-          </div>
+          <span class="unit-price">$${FFCart.formatMoney(item.price)} &middot; one of a kind</span>
         </div>
         <div>
           <div class="cart-line-total">$${FFCart.formatMoney(item.lineTotal)}</div>
@@ -99,22 +94,6 @@
       </div>
     `;
 
-    body.querySelectorAll(".qty-plus").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.closest(".cart-row").dataset.id;
-        const current = FFCart.getLineItems().find(i => i.id === id);
-        FFCart.setQty(id, (current ? current.qty : 0) + 1);
-        renderCart();
-      });
-    });
-    body.querySelectorAll(".qty-minus").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const id = btn.closest(".cart-row").dataset.id;
-        const current = FFCart.getLineItems().find(i => i.id === id);
-        FFCart.setQty(id, (current ? current.qty : 0) - 1);
-        renderCart();
-      });
-    });
     body.querySelectorAll(".remove-link").forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();

@@ -28,7 +28,7 @@ window.FF_PRODUCTS = [
     id: "purse-001",
     name: "Paisley Tapestry Watch Purse",
     price: 110,
-    description: "A one-of-a-kind crossbody made from a vintage paisley tapestry fabric with a brown leather trim and top zip closure. The strap is five vintage watch faces linked together, several trimmed in rhinestones, so the whole thing doubles as a wearable timepiece.",
+    description: "A one-of-a-kind crossbody made from a vintage paisley tapestry fabric with a brown leather trim and top zip closure. The strap is eight vintage watch faces linked together, several trimmed in rhinestones, so the whole thing doubles as a wearable timepiece.",
     image: "images/products/purse-001-paisley-main.jpg",
     gallery: ["images/products/purse-001-paisley-side.jpg", "images/products/purse-001-paisley-worn.jpg"],
     inStock: true
@@ -37,7 +37,7 @@ window.FF_PRODUCTS = [
     id: "purse-002",
     name: "Taupe Leather Watch Purse",
     price: 90,
-    description: "A taupe leather flap purse with an embossed monogram clasp, carried on a playful crossbody strap made from an array of colorful vintage watch faces — turquoise, blush pink, lime, and cherry red dials, linked with rhinestone accents.",
+    description: "A taupe leather flap purse carried on a playful strap made from an array of colorful vintage watch faces — turquoise, blush pink, lime, and cherry red dials, linked with rhinestone accents.",
     image: "images/products/purse-002-taupe-main.jpg",
     gallery: ["images/products/purse-002-taupe-side.jpg", "images/products/purse-002-taupe-worn.jpg", "images/products/purse-002-taupe-worn-back.jpg"],
     inStock: true

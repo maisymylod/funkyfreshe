@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop · Funky Freshe</title>
+<title>Shop · Funkyfreshe</title>
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="wrap">
-    <a href="index.html" class="logo">Funky <em>Freshe</em></a>
+    <a href="index.html" class="logo">Funky<em>freshe</em></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="story.html">Our Story</a></li>
@@ -38,7 +38,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    Funky Freshe &middot; Handmade earrings &amp; watch purses, made in Cincinnati, Ohio since 2021.
+    Funkyfreshe &middot; Handmade earrings &amp; watch purses, made in New York since 2021.
   </div>
 </footer>
 
@@ -68,6 +68,7 @@
       const photo = p.image
         ? `<img src="${p.image}" alt="${escapeHtml(p.name)}">`
         : `<div class="placeholder">${placeholderSVG()}Add a photo in<br>js/products.js</div>`;
+      const inCart = FFCart.isInCart(p.id);
 
       return `
         <article class="tag-card" data-id="${p.id}">
@@ -84,7 +85,7 @@
           </a>
           <div class="tag-footer">
             <span class="tag-price">${Number(p.price || 0).toFixed(2)}</span>
-            <button class="tag-add" data-id="${p.id}">Add to cart</button>
+            <button class="tag-add ${inCart ? 'added' : ''}" data-id="${p.id}">${inCart ? "In cart ✓" : "Add to cart"}</button>
           </div>
         </article>
       `;
@@ -93,14 +94,10 @@
     grid.querySelectorAll(".tag-add").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-id");
+        if (FFCart.isInCart(id)) return; // one-of-a-kind — already in the cart
         FFCart.addItem(id, 1);
-        const original = btn.textContent;
-        btn.textContent = "Added ✓";
+        btn.textContent = "In cart ✓";
         btn.classList.add("added");
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.classList.remove("added");
-        }, 1200);
       });
     });
   }
