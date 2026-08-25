@@ -17,10 +17,12 @@
                  gallery: ["images/products/purse-001-b.jpg", "images/products/purse-001-c.jpg"]
                  leave as [] if you only have the one main photo
    - inStock     true  = shows normally with "Add to cart"
-                 false = since every purse is one-of-a-kind, this removes
-                         it from the shop page and home preview entirely
-                         once it's sold (its product page still exists if
-                         someone has the direct link, showing "Sold")
+                 false = since every purse is one-of-a-kind, this marks it
+                         "Sold" on the shop page and sinks it to the bottom
+                         of the grid instead of removing it — so visitors
+                         can still see it (and see that you have real
+                         customers), they just can't buy it. Its product
+                         page still works too, showing "Sold".
    ============================================================ */
 
 window.FF_PRODUCTS = [
@@ -44,30 +46,39 @@ window.FF_PRODUCTS = [
   },
   {
     id: "purse-003",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
+    name: "Silver Mesh Clutch Watch Purse",
+    price: 85,
+    description: "A shimmery silver metal-mesh envelope clutch carried on a strap of linked vintage watch faces — a rhinestone-trimmed pink square dial between two red round dials. Sold — shown here so you can see it out in the wild.",
+    image: "images/products/purse-003-silver-mesh-stand.jpg",
+    gallery: ["images/products/purse-003-silver-mesh-worn-front.jpg", "images/products/purse-003-silver-mesh-worn-back.jpg"],
+    inStock: false
+  },
+  {
+    id: "belt-001",
+    name: "Rainbow Watch Belt",
+    price: 65,
+    description: "A denim-ready belt made from an unbroken row of colorful vintage watch faces — lime, mustard, red, pink, and rhinestone-trimmed dials linked side by side. Sold — shown here so you can see it out in the wild.",
+    image: "images/products/belt-001-rainbow-front.jpg",
+    gallery: ["images/products/belt-001-rainbow-side.jpg", "images/products/belt-001-rainbow-close.jpg"],
+    inStock: false
   },
   {
     id: "purse-004",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
+    name: "Calvin Klein Crossbody Watch Purse",
+    price: 95,
+    description: "A black Calvin Klein crossbody given new life with a strap of turquoise-faced vintage watches and a mother-of-pearl dial, finished with a matching watch-face charm dangling from the zip. Sold — shown here so you can see it out in the wild.",
+    image: "images/products/purse-004-ck-crossbody-stand.jpg",
+    gallery: ["images/products/purse-004-ck-crossbody-worn.jpg", "images/products/purse-004-ck-crossbody-stand-close.jpg"],
+    inStock: false
   },
   {
     id: "purse-005",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
+    name: "Red Patent Watch Bag",
+    price: 100,
+    description: "A glossy red patent leather bag with silver hardware, carried on a mixed strap of black, burgundy, blue, and rhinestone pink watch faces. Sold — shown here so you can see it out in the wild.",
+    image: "images/products/purse-005-red-patent-stand.jpg",
+    gallery: ["images/products/purse-005-red-patent-worn.jpg", "images/products/purse-005-red-patent-stand-close.jpg"],
+    inStock: false
   },
   {
     id: "purse-006",

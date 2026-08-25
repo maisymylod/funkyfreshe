@@ -381,6 +381,27 @@ h1, h2, h3{
 }
 .tag-photo.is-empty .placeholder svg{ margin: 0 auto 8px; display:block; }
 
+/* sold pieces stay in the grid, faded slightly, with a ribbon badge */
+.tag-card.is-sold{ opacity: .78; }
+.tag-card.is-sold:hover{ opacity: 1; }
+.tag-photo{ position: relative; }
+.tag-sold-badge{
+  position: absolute;
+  top: 12px;
+  right: -30px;
+  background: var(--pink-deep, #C24A72);
+  color: var(--white);
+  font-family: var(--font-tag);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 34px;
+  transform: rotate(35deg);
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+  z-index: 2;
+}
+.tag-add.is-disabled{ background: #E3C7CE; cursor: not-allowed; }
+
 .tag-link{
   display: block;
   color: inherit;

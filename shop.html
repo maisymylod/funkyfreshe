@@ -72,9 +72,16 @@
 
   function renderShop() {
     const grid = document.getElementById("shop-grid");
-    // Each purse is one-of-a-kind — once it's sold, it comes off the shop
-    // page entirely rather than sticking around unpurchasable.
-    const products = (window.FF_PRODUCTS || []).filter((p) => p.inStock);
+    // Every purse stays visible, even once it's sold — sold pieces just
+    // sink to the bottom of the grid and show "Sold" instead of an
+    // "Add to cart" button. That way visitors can still see the full
+    // range of what you've made (and that real customers have bought
+    // from you), they just can't add a sold piece to their cart.
+    const all = window.FF_PRODUCTS || [];
+    const products = [...all].sort((a, b) => {
+      if (a.inStock === b.inStock) return 0;
+      return a.inStock ? -1 : 1;
+    });
 
     if (products.length === 0) {
       grid.innerHTML = `<div class="shop-empty">No purses listed yet — add some in js/products.js.</div>`;
@@ -86,13 +93,14 @@
         ? `<img src="${p.image}" alt="${escapeHtml(p.name)}">`
         : `<div class="placeholder">${placeholderSVG()}Add a photo in<br>js/products.js</div>`;
       const inCart = FFCart.isInCart(p.id);
+      const sold = !p.inStock;
 
       return `
-        <article class="tag-card" data-id="${p.id}">
+        <article class="tag-card ${sold ? 'is-sold' : ''}" data-id="${p.id}">
           <div class="tag-string"></div>
           <div class="tag-hole"></div>
           <a class="tag-link" href="product.html?id=${encodeURIComponent(p.id)}">
-            <div class="tag-photo ${p.image ? '' : 'is-empty'}">${photo}</div>
+            <div class="tag-photo ${p.image ? '' : 'is-empty'}">${photo}${sold ? '<span class="tag-sold-badge">Sold</span>' : ''}</div>
             <div class="tag-body">
               <h3>${escapeHtml(p.name)}</h3>
               <p class="tag-desc">${escapeHtml(p.description || "")}</p>
@@ -102,13 +110,16 @@
           </a>
           <div class="tag-footer">
             <span class="tag-price">${Number(p.price || 0).toFixed(2)}</span>
-            <button class="tag-add ${inCart ? 'added' : ''}" data-id="${p.id}">${inCart ? "In cart ✓" : "Add to cart"}</button>
+            ${sold
+              ? `<button class="tag-add is-disabled" disabled>Sold out</button>`
+              : `<button class="tag-add ${inCart ? 'added' : ''}" data-id="${p.id}">${inCart ? "In cart ✓" : "Add to cart"}</button>`
+            }
           </div>
         </article>
       `;
     }).join("");
 
-    grid.querySelectorAll(".tag-add").forEach((btn) => {
+    grid.querySelectorAll(".tag-add:not(.is-disabled)").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-id");
         if (FFCart.isInCart(id)) return; // one-of-a-kind — already in the cart
