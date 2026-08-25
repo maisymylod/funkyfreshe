@@ -80,67 +80,7 @@ window.FF_PRODUCTS = [
     gallery: ["images/products/purse-005-red-patent-worn.jpg", "images/products/purse-005-red-patent-stand-close.jpg"],
     inStock: false
   },
-  {
-    id: "purse-006",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
-  },
-  {
-    id: "purse-007",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
-  },
-  {
-    id: "purse-008",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
-  },
-  {
-    id: "purse-009",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
-  },
-  {
-    id: "purse-010",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
-  },
-  {
-    id: "purse-011",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
-  },
-  {
-    id: "purse-012",
-    name: "Edit me: purse name",
-    price: 0,
-    description: "Edit me: a short description of this purse.",
-    image: "",
-    gallery: [],
-    inStock: true
-  }
+  /* Add new purses here as you send me photos — copy the pattern
+     from purse-001 through purse-005 above (id, name, price,
+     description, image, gallery, inStock: true). */
 ];
