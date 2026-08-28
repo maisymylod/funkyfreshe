@@ -45,22 +45,12 @@
   <div class="text-bubble">
     <span class="eyebrow">Out and About</span>
     <h1>Past customers</h1>
-    <p>Purses and custom banners, carried and hung by the people who bought them. Use the arrows to look through.</p>
+    <p>Purses and custom banners, carried and hung by the people who bought them. Keep scrolling to see more.</p>
   </div>
   </header>
 
 <section class="wrap" style="padding-bottom:100px;">
-  <div class="carousel">
-    <div class="carousel-frame">
-      <img id="carousel-img" src="" alt="">
-    </div>
-    <p class="carousel-caption" id="carousel-caption"></p>
-    <div class="carousel-controls">
-      <button class="carousel-arrow" id="carousel-prev" aria-label="Previous photo">&larr;</button>
-      <button class="carousel-arrow" id="carousel-next" aria-label="Next photo">&rarr;</button>
-    </div>
-    <div class="carousel-dots" id="carousel-dots"></div>
-  </div>
+  <div class="customer-gallery" id="customer-gallery"></div>
 </section>
 
 <footer class="site-footer">
@@ -77,57 +67,40 @@
 <script>
   (function () {
     const photos = window.FF_CUSTOMERS || [];
-    let index = 0;
+    const gallery = document.getElementById("customer-gallery");
 
-    const img = document.getElementById("carousel-img");
-    const caption = document.getElementById("carousel-caption");
-    const dotsWrap = document.getElementById("carousel-dots");
-    const prevBtn = document.getElementById("carousel-prev");
-    const nextBtn = document.getElementById("carousel-next");
-
-    function render() {
-      if (photos.length === 0) {
-        caption.textContent = "No photos yet — add some in js/customers.js.";
-        return;
-      }
-      const photo = photos[index];
-      img.src = photo.image;
-      img.alt = photo.caption || "Funkyfreshe customer photo";
-      caption.textContent = photo.caption || "";
-      dotsWrap.querySelectorAll("button").forEach((dot, i) => {
-        dot.classList.toggle("is-active", i === index);
-      });
+    if (photos.length === 0) {
+      gallery.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:var(--ink-soft);">No photos yet — add some in js/customers.js.</p>`;
+      return;
     }
 
-    function renderDots() {
-      dotsWrap.innerHTML = photos.map((_, i) =>
-        `<button aria-label="Go to photo ${i + 1}" data-i="${i}"></button>`
-      ).join("");
-      dotsWrap.querySelectorAll("button").forEach((dot) => {
-        dot.addEventListener("click", () => {
-          index = Number(dot.getAttribute("data-i"));
-          render();
+    gallery.innerHTML = photos.map((photo, i) => `
+      <figure class="cust-item" style="transition-delay:${(i % 3) * 90}ms;">
+        <div class="cust-photo">
+          <img src="${photo.image}" alt="${(photo.caption || "Funkyfreshe customer photo").replace(/"/g, "&quot;")}" loading="lazy">
+        </div>
+        <figcaption class="cust-caption">${photo.caption || ""}</figcaption>
+      </figure>
+    `).join("");
+
+    // Reveal each photo as it scrolls into view, instead of showing
+    // them all at once — the further you scroll, the more appear.
+    const items = gallery.querySelectorAll(".cust-item");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
         });
-      });
+      }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
+
+      items.forEach((item) => observer.observe(item));
+    } else {
+      // No IntersectionObserver support — just show everything.
+      items.forEach((item) => item.classList.add("is-visible"));
     }
-
-    prevBtn.addEventListener("click", () => {
-      if (photos.length === 0) return;
-      index = (index - 1 + photos.length) % photos.length;
-      render();
-    });
-    nextBtn.addEventListener("click", () => {
-      if (photos.length === 0) return;
-      index = (index + 1) % photos.length;
-      render();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") prevBtn.click();
-      if (e.key === "ArrowRight") nextBtn.click();
-    });
-
-    renderDots();
-    render();
   })();
 </script>
 </body>
