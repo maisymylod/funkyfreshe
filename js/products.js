@@ -23,6 +23,12 @@
                          can still see it (and see that you have real
                          customers), they just can't buy it. Its product
                          page still works too, showing "Sold".
+   - squareCheckoutUrl
+                 the Square-hosted payment link for this exact purse —
+                 its own dedicated checkout page (square.link/u/...) with
+                 real shipping and tax calculated by Square. When you send
+                 me photos + details for a new purse, I'll create it in
+                 your Square catalog and generate this link for you.
    ============================================================ */
 
 window.FF_PRODUCTS = [
@@ -33,7 +39,8 @@ window.FF_PRODUCTS = [
     description: "A one-of-a-kind crossbody made from a vintage paisley tapestry fabric with a brown leather trim and top zip closure. The strap is eight vintage watch faces linked together, several trimmed in rhinestones, so the whole thing doubles as a wearable timepiece.",
     image: "images/products/purse-001-paisley-main.jpg",
     gallery: ["images/products/purse-001-paisley-side.jpg", "images/products/purse-001-paisley-worn.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/Xnh75w4i"
   },
   {
     id: "purse-002",
@@ -42,7 +49,8 @@ window.FF_PRODUCTS = [
     description: "A taupe leather flap purse carried on a playful strap made from an array of colorful vintage watch faces — turquoise, blush pink, lime, and cherry red dials, linked with rhinestone accents.",
     image: "images/products/purse-002-taupe-main.jpg",
     gallery: ["images/products/purse-002-taupe-side.jpg", "images/products/purse-002-taupe-worn.jpg", "images/products/purse-002-taupe-worn-back.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/cwhcMip1"
   },
   {
     id: "purse-003",
