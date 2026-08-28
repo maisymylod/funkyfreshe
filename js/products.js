@@ -40,7 +40,7 @@ window.FF_PRODUCTS = [
     image: "images/products/purse-001-paisley-main.jpg",
     gallery: ["images/products/purse-001-paisley-side.jpg", "images/products/purse-001-paisley-worn.jpg"],
     inStock: true,
-    squareCheckoutUrl: "https://square.link/u/YwtwR1R6"
+    squareCheckoutUrl: "https://square.link/u/Xnh75w4i"
   },
   {
     id: "purse-002",
@@ -50,7 +50,7 @@ window.FF_PRODUCTS = [
     image: "images/products/purse-002-taupe-main.jpg",
     gallery: ["images/products/purse-002-taupe-side.jpg", "images/products/purse-002-taupe-worn.jpg", "images/products/purse-002-taupe-worn-back.jpg"],
     inStock: true,
-    squareCheckoutUrl: "https://square.link/u/qssgXLHI"
+    squareCheckoutUrl: "https://square.link/u/cwhcMip1"
   },
   {
     id: "purse-003",
