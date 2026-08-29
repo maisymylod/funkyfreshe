@@ -34,6 +34,12 @@
 
 *{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; }
+/* Flex/grid items default to a hidden "min-width: auto" that ignores
+   max-width scaling on images — this is what let the hero photo
+   overflow phone screens instead of shrinking to fit. Reset it
+   globally so any image inside a flex or grid container always
+   shrinks properly instead of blowing out the layout. */
+img{ min-width: 0; }
 body{
   margin: 0;
   background-color: var(--cream);
