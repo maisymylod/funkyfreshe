@@ -124,7 +124,6 @@
         </div>
         <div class="product-info">
           ${!product.inStock ? '<span class="sold-badge">Sold</span>' : ''}
-          <span class="eyebrow">Handmade by me</span>
           <h1 style="margin-top:8px;">${escapeHtml(product.name)}</h1>
           <div class="product-price">${Number(product.price || 0).toFixed(2)}</div>
           <p class="product-desc">${escapeHtml(product.description || "No description yet — add one in js/products.js.")}</p>

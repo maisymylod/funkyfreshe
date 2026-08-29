@@ -59,6 +59,9 @@ button{ font-family: inherit; cursor: pointer; }
   margin: 0 auto;
   padding: 0 24px;
 }
+@media (max-width: 480px){
+  .wrap{ padding: 0 16px; }
+}
 
 h1, h2, h3{
   font-family: var(--font-display);
@@ -198,6 +201,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 /* Mobile nav: links collapse into a full-width dropdown behind a hamburger */
 @media (max-width: 860px){
   .site-nav .wrap{ min-height: 64px; padding-top: 10px; padding-bottom: 10px; }
+  .logo{ font-size: 30px; }
   .nav-toggle{ display: flex; order: 3; }
   .nav-right{ order: 2; }
   .nav-links{
