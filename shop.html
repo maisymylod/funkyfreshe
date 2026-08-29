@@ -6,14 +6,14 @@
 <title>Shop · Funkyfreshe</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shop · Funkyfreshe">
-<meta property="og:description" content="Funkyfreshe: handmade, one-of-a-kind purses built from thrifted bags and recycled watch faces.">
+<meta property="og:description" content="Funkyfreshe: purses I build myself from thrifted bags and recycled watch faces.">
 <meta property="og:image" content="https://ssn56-boop.github.io/funkyfreshe/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://ssn56-boop.github.io/funkyfreshe/shop.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Shop · Funkyfreshe">
-<meta name="twitter:description" content="Funkyfreshe: handmade, one-of-a-kind purses built from thrifted bags and recycled watch faces.">
+<meta name="twitter:description" content="Funkyfreshe: purses I build myself from thrifted bags and recycled watch faces.">
 <meta name="twitter:image" content="https://ssn56-boop.github.io/funkyfreshe/images/og-image.jpg">
 <link rel="stylesheet" href="css/main.css">
 </head>
@@ -42,14 +42,23 @@
 
 <header class="page-hero wrap">
   <div class="text-bubble">
-    <span class="eyebrow">One of a kind</span>
+    <span class="eyebrow">Handmade, one at a time</span>
     <h1>Shop the purses</h1>
-    <p>Every watch purse is handmade and released in small batches called drops. Tap a tag to add it to your cart.</p>
+    <p>Every watch purse is something I made myself, released in small batches called drops. Tap a tag to add it to your cart.</p>
   </div>
   </header>
 
 <section class="wrap">
   <div id="shop-grid" class="shop-grid"></div>
+</section>
+
+<section class="wrap" style="padding-bottom:100px; text-align:center;">
+  <div class="receipt-card" style="max-width:560px; margin:0 auto; text-align:center;">
+    <span class="eyebrow">Also available</span>
+    <h2 style="font-size:30px; margin-top:10px;">Custom celebration banners</h2>
+    <p style="color:var(--ink-soft); margin:12px 0 20px;">I also hand-paint banners for birthdays, showers, and every occasion in between. My request form is linked in my Instagram bio — or just tap below.</p>
+    <a id="banner-form-link" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%; justify-content:center;">Request a Custom Banner</a>
+  </div>
 </section>
 
 <footer class="site-footer">
@@ -122,7 +131,7 @@
     grid.querySelectorAll(".tag-add:not(.is-disabled)").forEach((btn) => {
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-id");
-        if (FFCart.isInCart(id)) return; // one-of-a-kind — already in the cart
+        if (FFCart.isInCart(id)) return; // only one to sell — already in the cart
         FFCart.addItem(id, 1);
         btn.textContent = "In cart ✓";
         btn.classList.add("added");
@@ -136,7 +145,13 @@
     return div.innerHTML;
   }
 
-  document.addEventListener("DOMContentLoaded", renderShop);
+  document.addEventListener("DOMContentLoaded", () => {
+    renderShop();
+    const link = document.getElementById("banner-form-link");
+    if (link && window.FF_CONFIG && window.FF_CONFIG.CUSTOM_BANNER_FORM_URL) {
+      link.href = window.FF_CONFIG.CUSTOM_BANNER_FORM_URL;
+    }
+  });
 </script>
 </body>
 </html>

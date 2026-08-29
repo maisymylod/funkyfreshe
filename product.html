@@ -6,14 +6,14 @@
 <title>Purse · Funkyfreshe</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Purse · Funkyfreshe">
-<meta property="og:description" content="Funkyfreshe: handmade, one-of-a-kind purses built from thrifted bags and recycled watch faces.">
+<meta property="og:description" content="Funkyfreshe: purses I build myself from thrifted bags and recycled watch faces.">
 <meta property="og:image" content="https://ssn56-boop.github.io/funkyfreshe/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://ssn56-boop.github.io/funkyfreshe/product.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Purse · Funkyfreshe">
-<meta name="twitter:description" content="Funkyfreshe: handmade, one-of-a-kind purses built from thrifted bags and recycled watch faces.">
+<meta name="twitter:description" content="Funkyfreshe: purses I build myself from thrifted bags and recycled watch faces.">
 <meta name="twitter:image" content="https://ssn56-boop.github.io/funkyfreshe/images/og-image.jpg">
 <link rel="stylesheet" href="css/main.css">
 </head>
@@ -124,7 +124,7 @@
         </div>
         <div class="product-info">
           ${!product.inStock ? '<span class="sold-badge">Sold</span>' : ''}
-          <span class="eyebrow">One of a kind</span>
+          <span class="eyebrow">Handmade by me</span>
           <h1 style="margin-top:8px;">${escapeHtml(product.name)}</h1>
           <div class="product-price">${Number(product.price || 0).toFixed(2)}</div>
           <p class="product-desc">${escapeHtml(product.description || "No description yet — add one in js/products.js.")}</p>
@@ -159,7 +159,7 @@
     const addBtn = document.getElementById("product-add");
     addBtn.addEventListener("click", () => {
       if (addBtn.disabled) return;
-      if (FFCart.isInCart(product.id)) return; // one-of-a-kind — already in the cart
+      if (FFCart.isInCart(product.id)) return; // only one to sell — already in the cart
       FFCart.addItem(product.id, 1);
       addBtn.textContent = "In cart ✓";
     });

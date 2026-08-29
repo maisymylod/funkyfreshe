@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact · Funkyfreshe</title>
-<meta name="description" content="Get in touch with Funkyfreshe — send an inquiry or find us on Instagram.">
+<meta name="description" content="Get in touch with me — send an inquiry or find me on Instagram.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact · Funkyfreshe">
-<meta property="og:description" content="Get in touch with Funkyfreshe — send an inquiry or find us on Instagram.">
+<meta property="og:description" content="Get in touch with me — send an inquiry or find me on Instagram.">
 <meta property="og:image" content="https://ssn56-boop.github.io/funkyfreshe/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://ssn56-boop.github.io/funkyfreshe/contact.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Contact · Funkyfreshe">
-<meta name="twitter:description" content="Get in touch with Funkyfreshe — send an inquiry or find us on Instagram.">
+<meta name="twitter:description" content="Get in touch with me — send an inquiry or find me on Instagram.">
 <meta name="twitter:image" content="https://ssn56-boop.github.io/funkyfreshe/images/og-image.jpg">
 <link rel="stylesheet" href="css/main.css">
 </head>
@@ -45,7 +45,7 @@
   <div class="text-bubble">
     <span class="eyebrow">Say hi</span>
     <h1>Get in touch</h1>
-    <p>Have a question about an order, a custom banner, or anything else? Send an inquiry below, or find us on Instagram.</p>
+    <p>Have a question about an order, or anything else? Send me an inquiry below, or find me on Instagram.</p>
   </div>
   </header>
 
@@ -66,25 +66,20 @@
         </div>
         <div class="field">
           <label for="c-message">What's your inquiry about?</label>
-          <textarea id="c-message" rows="5" required placeholder="Tell us what you need..."></textarea>
+          <textarea id="c-message" rows="5" required placeholder="Tell me what you need..."></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Send inquiry</button>
       </form>
       <div id="contact-confirm" style="display:none; text-align:center; padding:20px 0;">
         <p style="font-weight:600;">Thanks — your email app should be open with your message ready to send.</p>
-        <p style="color:var(--ink-soft); font-size:14px;">If it didn't open, email us directly instead.</p>
+        <p style="color:var(--ink-soft); font-size:14px;">If it didn't open, email me directly instead.</p>
       </div>
     </div>
 
     <div class="receipt-card" style="text-align:center;">
-      <h3>Find us on Instagram</h3>
-      <p style="color:var(--ink-soft); font-size:14.5px; margin-bottom:20px;">The fastest way to reach Funkyfreshe, and the best way to stay updated on big news. DM us any time.</p>
+      <h3>Find me on Instagram</h3>
+      <p style="color:var(--ink-soft); font-size:14.5px; margin-bottom:20px;">The fastest way to reach me, and the best way to stay updated on big news. DM me any time.</p>
       <a href="https://www.instagram.com/funkyfreshe" class="btn btn-primary" style="width:100%; justify-content:center;">Message @funkyfreshe</a>
-      <div style="border-top:1px dashed var(--line); margin-top:24px; padding-top:22px;">
-        <h3 style="font-size:16px;">Want a custom banner?</h3>
-        <p style="color:var(--ink-soft); font-size:14px; margin:10px 0 16px;">Hand-painted celebration banners are also available — the request form is linked in our Instagram bio, or tap below.</p>
-        <a id="banner-form-link" href="#" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%; justify-content:center;">Request a Custom Banner</a>
-      </div>
     </div>
   </div>
 </section>
@@ -116,13 +111,6 @@
 
     this.style.display = "none";
     document.getElementById("contact-confirm").style.display = "block";
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const link = document.getElementById("banner-form-link");
-    if (link && window.FF_CONFIG && window.FF_CONFIG.CUSTOM_BANNER_FORM_URL) {
-      link.href = window.FF_CONFIG.CUSTOM_BANNER_FORM_URL;
-    }
   });
 </script>
 </body>
