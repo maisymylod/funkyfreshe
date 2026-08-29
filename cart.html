@@ -97,6 +97,14 @@
     `).join("");
 
     const subtotal = FFCart.getSubtotal();
+    const allHaveSquareLink = items.every(i => (window.FF_PRODUCTS || []).find(p => p.id === i.id && p.squareCheckoutUrl));
+    const singleSquareUrl = items.length === 1 && allHaveSquareLink
+      ? (window.FF_PRODUCTS || []).find(p => p.id === items[0].id).squareCheckoutUrl
+      : null;
+
+    const checkoutHref = singleSquareUrl ? singleSquareUrl : "checkout.html";
+    const checkoutTarget = singleSquareUrl ? ` target="_blank" rel="noopener"` : "";
+    const checkoutLabel = singleSquareUrl ? "Pay with Square" : "Go to checkout";
 
     body.innerHTML = `
       <div class="cart-layout">
@@ -105,7 +113,7 @@
           <div class="summary-row"><span>Subtotal</span><span>$${FFCart.formatMoney(subtotal)}</span></div>
           <div class="summary-row"><span>Shipping</span><span>Calculated at checkout</span></div>
           <div class="summary-row total"><span>Total</span><span>$${FFCart.formatMoney(subtotal)}</span></div>
-          <a href="checkout.html" class="btn btn-primary btn-block" style="margin-top:20px; text-align:center;">Go to checkout</a>
+          <a href="${checkoutHref}"${checkoutTarget} class="btn btn-primary btn-block" style="margin-top:20px; text-align:center;">${checkoutLabel}</a>
           <a href="shop.html" class="btn-ghost" style="display:block; text-align:center; margin-top:10px;">Continue shopping</a>
         </div>
       </div>

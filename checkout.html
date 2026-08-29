@@ -42,7 +42,7 @@
 
 <header class="page-hero wrap">
   <div class="text-bubble">
-    <span class="eyebrow">Almost there</span>
+    <span class="eyebrow">Pay for each piece</span>
     <h1>Checkout</h1>
   </div>
   </header>
@@ -71,60 +71,12 @@
     return div.innerHTML;
   }
 
-  function getTotals() {
-    // Square's checkout page calculates shipping and tax itself — this
-    // site only ever shows the subtotal for the one-of-a-kind piece(s).
-    const subtotal = FFCart.getSubtotal();
-    return { subtotal };
-  }
-
   function renderEmptyState() {
     body.innerHTML = `
       <div class="empty-cart">
         <p>Your cart is empty, so there's nothing to check out yet.</p>
         <a href="shop.html" class="btn btn-primary" style="margin-top:12px;">Browse the purses</a>
       </div>`;
-  }
-
-  function renderForm() {
-    const items = FFCart.getLineItems();
-    const { subtotal } = getTotals();
-    const allHaveSquareLink = items.length > 0 && items.every(i => (window.FF_PRODUCTS || []).find(p => p.id === i.id && p.squareCheckoutUrl));
-
-    const receiptRows = items.map(i => `
-      <div class="receipt-item">
-        <span>${escapeHtml(i.name)}</span>
-        <span>$${FFCart.formatMoney(i.lineTotal)}</span>
-      </div>
-    `).join("");
-
-    body.innerHTML = `
-      <div class="checkout-grid">
-        <div class="form-card">
-          <h3 style="margin-bottom:8px;">Ready to pay</h3>
-          <p style="color:var(--ink-soft); margin-bottom:18px;">
-            You'll enter your shipping address, email, and payment details on Square's secure checkout page next —
-            no need to fill anything in here.
-          </p>
-          <div class="field">
-            <label for="notes">Anything we should know? (optional)</label>
-            <textarea id="notes" rows="3" placeholder="Special requests, gift note, etc. — you can also just mention it in the Square checkout notes."></textarea>
-          </div>
-          <button id="continue-btn" class="btn btn-primary btn-block">${allHaveSquareLink ? "Continue to Square checkout" : "Continue"}</button>
-        </div>
-
-        <div class="receipt-card">
-          <h3>Order summary</h3>
-          <div class="receipt-items">${receiptRows}</div>
-          <div class="summary-row total"><span>Subtotal</span><span>$${FFCart.formatMoney(subtotal)}</span></div>
-          <div class="pay-note">Shipping and any applicable sales tax are calculated by Square on the next step, based on your address. Nothing is charged and no order is placed until payment goes through.</div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById("continue-btn").addEventListener("click", () => {
-      goToPayment();
-    });
   }
 
   function goToPayment() {
@@ -174,7 +126,7 @@
     if (FFCart.getLineItems().length === 0) {
       renderEmptyState();
     } else {
-      renderForm();
+      goToPayment();
     }
   });
 </script>
