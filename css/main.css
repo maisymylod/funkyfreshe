@@ -563,6 +563,11 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   margin-top: 14px;
   border-radius: 12px;
   box-shadow: 0 10px 24px -14px rgba(43,15,26,.4);
+  max-height: 55vh;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 @media (max-width: 720px){
