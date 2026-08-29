@@ -4,7 +4,7 @@
    to this block, so retheming later means editing these vars.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@500;700&family=Homemade+Apple&family=Cutive+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
 :root{
   /* --- color, pulled from the pink/red stripe reference --- */
@@ -21,11 +21,11 @@
   --success:     #2E8B57;
 
   /* --- type --- */
-  /* Homemade Apple gives headings that neat, handwritten feel;
-     Cutive Mono gives body copy a clean typewriter vibe. */
+  /* Homemade Apple, used everywhere — headings, body copy, and
+     tags/prices/labels alike — for a consistently handwritten feel. */
   --font-display: 'Homemade Apple', 'Segoe Script', cursive;
-  --font-body:    'Cutive Mono', 'Courier New', monospace;
-  --font-tag:     'Space Mono', monospace;
+  --font-body:    'Homemade Apple', 'Segoe Script', cursive;
+  --font-tag:     'Homemade Apple', 'Segoe Script', cursive;
 
   /* --- shape / motion --- */
   --radius: 18px;
@@ -51,7 +51,8 @@ body{
   background-size: 98px 100%, 98px 100%;
   color: var(--ink);
   font-family: var(--font-body);
-  line-height: 1.5;
+  font-size: 19px;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 a{ color: inherit; text-decoration: none; }
@@ -82,7 +83,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 
 .eyebrow{
   font-family: var(--font-tag);
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--ink);
@@ -167,7 +168,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   flex: 1 1 auto;
 }
 .nav-links a{
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 500;
   color: var(--ink-soft);
   transition: color .15s var(--ease);
@@ -184,7 +185,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   color: var(--white) !important;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
   transition: transform .15s var(--ease), background .15s var(--ease);
   flex: 0 0 auto;
 }
@@ -193,7 +194,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   background: var(--red);
   color: var(--white);
   font-family: var(--font-tag);
-  font-size: 11px;
+  font-size: 14px;
   min-width: 18px;
   height: 18px;
   border-radius: 999px;
@@ -231,7 +232,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   .nav-links a{
     display: block;
     padding: 13px 4px;
-    font-size: 16px;
+    font-size: 20px;
     border-bottom: 1px solid var(--line);
   }
 }
@@ -247,7 +248,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   border: none;
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 20px;
   transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s var(--ease);
 }
 .btn-primary{
@@ -429,7 +430,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   margin-bottom: 6px;
 }
 .tag-desc{
-  font-size: 14px;
+  font-size: 17px;
   color: var(--ink-soft);
   margin: 0 0 12px;
   min-height: 40px;
@@ -452,7 +453,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .tag-sku{
   display: block;
   font-family: var(--font-tag);
-  font-size: 10.5px;
+  font-size: 15px;
   letter-spacing: .04em;
   color: var(--ink-soft);
   opacity: .7;
@@ -470,7 +471,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .tag-price{
   font-family: var(--font-tag);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 24px;
   color: var(--red-deep);
 }
 .tag-price::before{ content: "$"; opacity: .7; margin-right: 1px; }
@@ -481,7 +482,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   color: var(--white);
   padding: 10px 16px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 600;
   transition: background .15s var(--ease), transform .15s var(--ease);
 }
@@ -495,7 +496,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   background: var(--ink);
   color: var(--white);
   font-family: var(--font-tag);
-  font-size: 11px;
+  font-size: 15px;
   letter-spacing: .06em;
   padding: 4px 10px;
   border-radius: 999px;
@@ -544,13 +545,13 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .tl-item:nth-child(even) .tl-dot{ left: -8px; }
 .tl-date{
   font-family: var(--font-tag);
-  font-size: 12px;
+  font-size: 16px;
   color: var(--pink-deep);
   letter-spacing: .06em;
   text-transform: uppercase;
 }
 .tl-item h3{ font-size: 20px; margin: 6px 0 8px; }
-.tl-item p{ color: var(--ink-soft); font-size: 14.5px; margin: 0; }
+.tl-item p{ color: var(--ink-soft); font-size: 18px; margin: 0; }
 .tl-card{
   display: inline-block;
   background: #FFEAF2;
@@ -621,7 +622,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .cart-row .thumb img{ width: 100%; height: 100%; object-fit: cover; }
 .cart-row .thumb .placeholder{ font-size: 22px; color: var(--pink); }
 .cart-row h4{ font-family: var(--font-display); font-weight: 400; font-size: 22px; margin: 0 0 4px; }
-.cart-row .unit-price{ font-family: var(--font-tag); font-size: 13px; color: var(--ink-soft); }
+.cart-row .unit-price{ font-family: var(--font-tag); font-size: 17px; color: var(--ink-soft); }
 @media (max-width: 480px){
   .cart-row{ grid-template-columns: 64px 1fr; grid-template-areas: "thumb info" "thumb total"; }
   .cart-row .thumb{ width: 64px; height: 64px; grid-area: thumb; }
@@ -647,7 +648,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .qty-control button:hover{ background: var(--cream); }
 .qty-control span{
   width: 32px; text-align: center;
-  font-family: var(--font-tag); font-size: 13px;
+  font-family: var(--font-tag); font-size: 17px;
 }
 
 .cart-line-total{
@@ -658,7 +659,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .remove-link{
   display: block;
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 16px;
   color: var(--ink-soft);
   text-decoration: underline;
   text-align: right;
@@ -675,7 +676,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  font-size: 15px;
+  font-size: 18px;
   color: var(--ink-soft);
 }
 .summary-row.total{
@@ -718,7 +719,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .field{ margin-bottom: 18px; }
 .field label{
   display: block;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--ink-soft);
   margin-bottom: 6px;
@@ -742,8 +743,8 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   .field-row{ grid-template-columns: 1fr; gap: 0; }
 }
 
-.receipt-card h3{ font-size: 16px; margin-bottom: 14px; }
-.receipt-items{ font-family: var(--font-tag); font-size: 13.5px; }
+.receipt-card h3{ font-size: 22px; margin-bottom: 14px; }
+.receipt-items{ font-family: var(--font-tag); font-size: 17px; }
 .receipt-item{
   display: flex; justify-content: space-between;
   padding: 7px 0;
@@ -751,7 +752,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 .pay-options{ margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
 .pay-note{
-  font-size: 12.5px;
+  font-size: 16.5px;
   color: var(--ink-soft);
   background: var(--cream);
   border-radius: 10px;
@@ -818,7 +819,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   text-align: center;
   margin-top: 12px;
   color: var(--ink-soft);
-  font-size: 14px;
+  font-size: 18px;
   padding: 0 6px;
 }
 
