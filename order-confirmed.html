@@ -30,9 +30,9 @@
   </div>
 </nav>
 
-<section class="wrap">
-  <div id="confirm-body" class="order-confirm" style="padding:60px 0;"></div>
-</section>
+<header class="page-hero wrap">
+  <div class="text-bubble" id="confirm-body"></div>
+</header>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -57,16 +57,16 @@
     FFCart.clearCart();
     body.innerHTML = `
       <span class="stamp">Payment received</span>
-      <h2>Thank you!</h2>
+      <h1 style="margin-top:14px;">Thank you!</h1>
       <p style="max-width:460px; margin:18px auto; color:var(--ink-soft);">
         Your payment went through and your purse is officially sold. Square has sent (or is sending) a receipt to the email
-        you entered at checkout — that's your order confirmation. We'll get it packed up and shipped out soon.
+        you entered at checkout — that's your order confirmation. I'll get it packed up and shipped out soon.
       </p>
       <a href="shop.html" class="btn btn-primary" style="margin-top:10px;">Keep browsing</a>
     `;
   } else {
     body.innerHTML = `
-      <h2>No payment detected</h2>
+      <h1>No payment detected</h1>
       <p style="max-width:460px; margin:18px auto; color:var(--ink-soft);">
         If you cancelled or closed the Square checkout page before finishing, nothing was charged and no order was placed.
         Your cart is still waiting for you if you'd like to try again.

@@ -12,6 +12,7 @@
   --pink-deep:   #DE3E93;   /* hover / pressed */
   --red:         #EC1C24;   /* CTAs, price tags */
   --red-soft:    #E8918C;   /* muted red for the background stripes only */
+  --red-soft-deep: #C96A64; /* pressed/shadow shade of the toned-down red */
   --red-deep:    #B8121A;
   --cream:       #FFDCEB;   /* pink page background */
   --box-cream:   #FFF8E7;   /* true cream, used for boxes over the striped background */
@@ -126,7 +127,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   box-shadow: none;
 }
 .logo em{
-  color: var(--pink);
+  color: var(--line);
   font-style: normal;
 }
 
@@ -195,7 +196,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 .cart-link:hover{ background: var(--pink-deep); transform: translateY(-1px); }
 .cart-badge{
-  background: var(--red);
+  background: var(--red-soft);
   color: var(--white);
   font-family: var(--font-tag);
   font-size: 11px;
@@ -256,12 +257,12 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s var(--ease);
 }
 .btn-primary{
-  background: var(--red);
+  background: var(--red-soft);
   color: var(--white);
-  box-shadow: 0 6px 0 var(--red-deep);
+  box-shadow: 0 6px 0 var(--red-soft-deep);
 }
 .btn-primary:hover{ transform: translateY(-2px); }
-.btn-primary:active{ transform: translateY(1px); box-shadow: 0 3px 0 var(--red-deep); }
+.btn-primary:active{ transform: translateY(1px); box-shadow: 0 3px 0 var(--red-soft-deep); }
 .btn-primary:disabled{ background: #D9B7B0; box-shadow: none; cursor: not-allowed; transform: none; }
 
 .btn-outline{
@@ -526,28 +527,25 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   left: 50%;
   top: 0; bottom: 0;
   width: 3px;
-  background: linear-gradient(to bottom, var(--pink), var(--red));
+  background: linear-gradient(to bottom, var(--pink), var(--red-soft));
   transform: translateX(-50%);
   border-radius: 3px;
 }
 .tl-item{
   position: relative;
-  width: 50%;
-  padding: 0 46px 56px;
+  width: 100%;
+  text-align: center;
+  padding: 0 0 56px;
 }
-.tl-item:nth-child(odd){ left: 0; text-align: right; }
-.tl-item:nth-child(even){ left: 50%; text-align: left; }
 .tl-dot{
-  position: absolute;
-  top: 4px;
+  display: block;
   width: 16px; height: 16px;
   background: var(--white);
-  border: 3px solid var(--red);
+  border: 3px solid var(--red-soft);
   border-radius: 50%;
   z-index: 2;
+  margin: 0 auto 16px;
 }
-.tl-item:nth-child(odd) .tl-dot{ right: -8px; }
-.tl-item:nth-child(even) .tl-dot{ left: -8px; }
 .tl-date{
   font-family: var(--font-tag);
   font-size: 12px;
@@ -578,21 +576,11 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 
 @media (max-width: 720px){
-  /* Below this width, drop the left-side line-and-dot layout entirely —
-     it left content crammed against the edge. Instead, each entry is
-     just a centered card, stacked, with the same breathing room as
-     everything else on the site. */
+  /* On narrow screens, drop the connector line and dots entirely — the
+     centered cards read cleanly on their own without it. */
   .timeline::before{ display: none; }
   .tl-dot{ display: none; }
-  .tl-item, .tl-item:nth-child(even), .tl-item:nth-child(odd){
-    position: static;
-    width: 100%;
-    left: auto;
-    text-align: center;
-    padding: 0 0 36px;
-  }
-  .tl-card{ display: block; text-align: center; margin: 0 auto; }
-  .tl-item img{ margin-left: auto; margin-right: auto; }
+  .tl-item{ padding: 0 0 36px; }
 }
 
 /* ============================== CART DRAWER ============================== */
@@ -612,8 +600,8 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   grid-template-columns: 84px 1fr auto;
   gap: 16px;
   align-items: center;
-  background: var(--white);
-  border-radius: 14px;
+  background: var(--box-cream);
+  border-radius: 0;
   padding: 14px;
   box-shadow: 0 2px 0 var(--line);
 }
@@ -673,8 +661,8 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .remove-link:hover{ color: var(--red-deep); }
 
 .cart-summary{
-  background: var(--white);
-  border-radius: var(--radius);
+  background: var(--box-cream);
+  border-radius: 0;
   padding: 26px;
   box-shadow: 0 2px 0 var(--line);
 }
@@ -734,10 +722,10 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   width: 100%;
   padding: 12px 14px;
   border: 1.5px solid var(--line);
-  border-radius: 10px;
+  border-radius: 0;
   font-family: var(--font-body);
   font-size: 15px;
-  background: var(--cream);
+  background: var(--box-cream);
   color: var(--ink);
 }
 .field input:focus, .field textarea:focus{
@@ -760,8 +748,8 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .pay-note{
   font-size: 12.5px;
   color: var(--ink-soft);
-  background: var(--cream);
-  border-radius: 10px;
+  background: var(--box-cream);
+  border-radius: 0;
   padding: 12px 14px;
   margin-top: 14px;
 }
@@ -770,14 +758,14 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   text-align: center;
   padding: 70px 20px 100px;
 }
-.order-confirm .stamp{
+.stamp{
   display: inline-block;
-  border: 3px solid var(--red);
-  color: var(--red-deep);
+  border: 3px solid var(--red-soft);
+  color: var(--red-soft-deep);
   font-family: var(--font-tag);
   font-weight: 700;
   padding: 8px 18px;
-  border-radius: 10px;
+  border-radius: 0;
   transform: rotate(-4deg);
   margin-bottom: 18px;
   letter-spacing: .08em;
