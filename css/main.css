@@ -11,6 +11,7 @@
   --pink:        #FF6FB8;   /* primary brand color */
   --pink-deep:   #DE3E93;   /* hover / pressed */
   --red:         #EC1C24;   /* CTAs, price tags */
+  --red-soft:    #E8918C;   /* muted red for the background stripes only */
   --red-deep:    #B8121A;
   --cream:       #FFDCEB;   /* pink page background */
   --box-cream:   #FFF8E7;   /* true cream, used for boxes over the striped background */
@@ -45,7 +46,7 @@ body{
   margin: 0;
   background-color: var(--cream);
   background-image:
-    repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 4px, transparent 4px, transparent 14px);
+    repeating-linear-gradient(90deg, var(--red-soft) 0px, var(--red-soft) 4px, transparent 4px, transparent 14px);
   background-repeat: repeat;
   color: var(--ink);
   font-family: var(--font-body);
@@ -332,8 +333,8 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 
 .tag-card{
   position: relative;
-  background: var(--white);
-  border-radius: 14px;
+  background: var(--box-cream);
+  border-radius: 0;
   padding: 18px 18px 20px;
   box-shadow: 0 2px 0 var(--line), 0 14px 26px -18px rgba(43,15,26,.35);
   transform: rotate(-1deg);
@@ -377,7 +378,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 
 .tag-photo{
   aspect-ratio: 1 / 1;
-  border-radius: 10px;
+  border-radius: 0;
   overflow: hidden;
   background: var(--cream);
   margin-bottom: 14px;
@@ -567,7 +568,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 .tl-item img{
   margin-top: 14px;
-  border-radius: 12px;
+  border-radius: 0;
   box-shadow: 0 10px 24px -14px rgba(43,15,26,.4);
   max-height: 55vh;
   width: auto;
@@ -618,7 +619,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 .cart-row .thumb{
   width: 84px; height: 84px;
-  border-radius: 10px;
+  border-radius: 0;
   background: var(--cream);
   overflow: hidden;
   display: flex; align-items: center; justify-content: center;
@@ -714,7 +715,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 .form-card, .receipt-card{
   background: var(--box-cream);
-  border-radius: var(--radius);
+  border-radius: 0;
   padding: 30px;
   box-shadow: 0 2px 0 var(--line);
 }
@@ -811,7 +812,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 
 .cust-photo{
   background: var(--white);
-  border-radius: var(--radius);
+  border-radius: 0;
   box-shadow: 0 20px 40px -22px rgba(43,15,26,.45);
   overflow: hidden;
 }
@@ -856,7 +857,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 .product-main-photo{
   aspect-ratio: 1 / 1;
-  border-radius: var(--radius);
+  border-radius: 0;
   overflow: hidden;
   background: var(--white);
   box-shadow: 0 20px 40px -22px rgba(43,15,26,.4);
@@ -885,7 +886,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 .product-thumbs button{
   width: 64px; height: 64px;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
   border: 2px solid transparent;
   padding: 0;
