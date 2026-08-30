@@ -120,7 +120,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   flex: 0 0 auto;
   display: inline-block;
   background: var(--box-cream);
-  border: 2px solid var(--ink);
+  border: none;
   padding: 2px 12px 6px;
   box-shadow: none;
 }
@@ -305,7 +305,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
    narrower than the page so stripes stay clearly visible all around it. */
 .text-bubble{
   background: var(--box-cream);
-  border: 2px solid var(--ink);
+  border: none;
   border-radius: 0;
   padding: 26px 30px;
   max-width: 560px;
@@ -559,7 +559,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .tl-card{
   display: inline-block;
   background: var(--box-cream);
-  border: 2px solid var(--ink);
+  border: none;
   border-radius: 0;
   padding: 14px 18px;
   box-shadow: none;
@@ -590,7 +590,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
     text-align: center;
     padding: 0 0 36px;
   }
-  .tl-card{ display: block; text-align: center; }
+  .tl-card{ display: block; text-align: center; margin: 0 auto; }
   .tl-item img{ margin-left: auto; margin-right: auto; }
 }
 
@@ -713,7 +713,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   .checkout-grid{ grid-template-columns: 1fr; gap: 20px; padding-bottom: 60px; }
 }
 .form-card, .receipt-card{
-  background: var(--white);
+  background: var(--box-cream);
   border-radius: var(--radius);
   padding: 30px;
   box-shadow: 0 2px 0 var(--line);
@@ -798,6 +798,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 
 .cust-item{
   opacity: 0;
+  text-align: center;
   transform: translateY(46px) rotate(var(--tilt, 0deg));
   transition: opacity .7s var(--ease), transform .7s var(--ease);
 }
@@ -821,11 +822,13 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   object-fit: cover;
 }
 .cust-caption{
+  display: inline-block;
   text-align: center;
-  margin-top: 12px;
+  margin: 12px auto 0;
   color: var(--ink-soft);
   font-size: 14px;
-  padding: 0 6px;
+  padding: 8px 14px;
+  background: var(--box-cream);
 }
 
 @media (max-width: 860px){
