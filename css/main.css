@@ -273,9 +273,9 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .btn-outline:hover{ background: var(--ink); color: var(--white); }
 
 .btn-ghost{
-  background: transparent;
+  background: var(--box-cream);
   color: var(--pink-deep);
-  padding: 10px 6px;
+  padding: 10px 16px;
   font-weight: 600;
 }
 .btn-ghost:hover{ color: var(--red-deep); }
@@ -927,6 +927,8 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .back-to-shop{
   display: inline-block;
   margin-top: 22px;
+  padding: 8px 14px;
+  background: var(--box-cream);
   color: var(--ink-soft);
   font-size: 14px;
   text-decoration: underline;

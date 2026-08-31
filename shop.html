@@ -111,7 +111,6 @@
             <div class="tag-photo ${p.image ? '' : 'is-empty'}">${photo}${sold ? '<span class="tag-sold-badge">Sold</span>' : ''}</div>
             <div class="tag-body">
               <h3>${escapeHtml(p.name)}</h3>
-              <p class="tag-desc">${escapeHtml(p.description || "")}</p>
               <div class="tag-barcode" aria-hidden="true"></div>
               <span class="tag-sku">No. ${escapeHtml(p.id)}</span>
             </div>
