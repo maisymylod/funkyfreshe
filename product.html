@@ -123,11 +123,14 @@
           ${thumbsHtml}
         </div>
         <div class="product-info">
-          ${!product.inStock ? '<span class="sold-badge">Sold</span>' : ''}
-          <h1 style="margin-top:8px;">${escapeHtml(product.name)}</h1>
-          <div class="product-price">${Number(product.price || 0).toFixed(2)}</div>
-          <p class="product-desc">${escapeHtml(product.description || "No description yet — add one in js/products.js.")}</p>
-          <button id="product-add" class="btn btn-primary btn-block" ${product.inStock ? "" : "disabled"}>
+          <div class="text-bubble" style="margin:0; text-align:left; max-width:none; padding:28px 32px;">
+            ${!product.inStock ? '<span class="sold-badge">Sold</span>' : ''}
+            <h1 style="margin-top:8px;">${escapeHtml(product.name)}</h1>
+            <div class="product-price">${Number(product.price || 0).toFixed(2)}</div>
+            <p class="product-desc" style="margin-bottom:10px;">${escapeHtml(product.description || "No description yet — add one in js/products.js.")}</p>
+            <p style="font-family:var(--font-tag); font-size:12.5px; color:var(--ink-soft); margin:0;">Note: each watch face is approximately 2.5 inches.</p>
+          </div>
+          <button id="product-add" class="btn btn-primary btn-block" style="margin-top:20px;" ${product.inStock ? "" : "disabled"}>
             ${!product.inStock ? "Sold out" : (isInCart ? "In cart ✓" : "Add to cart")}
           </button>
           <a href="shop.html" class="back-to-shop">&larr; Back to all purses</a>
