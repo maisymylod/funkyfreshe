@@ -94,7 +94,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .eyebrow::before{
   content: "";
   width: 14px; height: 2px;
-  background: var(--red);
+  background: var(--ink);
   display: inline-block;
 }
 
@@ -186,15 +186,15 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   align-items: center;
   gap: 8px;
   padding: 9px 16px;
-  background: var(--ink);
-  color: var(--white) !important;
-  border-radius: 999px;
+  background: var(--box-cream);
+  color: var(--ink) !important;
+  border-radius: 0;
   font-weight: 600;
   font-size: 14px;
   transition: transform .15s var(--ease), background .15s var(--ease);
   flex: 0 0 auto;
 }
-.cart-link:hover{ background: var(--pink-deep); transform: translateY(-1px); }
+.cart-link:hover{ background: var(--line); transform: translateY(-1px); }
 .cart-badge{
   background: var(--red-soft);
   color: var(--white);
@@ -412,7 +412,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   position: absolute;
   top: 12px;
   right: -30px;
-  background: var(--pink-deep, #C24A72);
+  background: var(--ink);
   color: var(--white);
   font-family: var(--font-tag);
   font-size: 12px;
@@ -478,7 +478,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   font-family: var(--font-tag);
   font-weight: 700;
   font-size: 18px;
-  color: var(--red-deep);
+  color: var(--ink);
 }
 .tag-price::before{ content: "$"; opacity: .7; margin-right: 1px; }
 
@@ -533,6 +533,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 .tl-item{
   position: relative;
+  z-index: 1;
   width: 100%;
   text-align: center;
   padding: 0 0 56px;
@@ -894,7 +895,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   font-family: var(--font-tag);
   font-weight: 700;
   font-size: 26px;
-  color: var(--red-deep);
+  color: var(--ink);
   margin: 10px 0 20px;
 }
 .product-price::before{ content: "$"; opacity: .7; }
