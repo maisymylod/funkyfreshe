@@ -355,7 +355,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   width: 22px; height: 22px;
   border-radius: 50%;
   background: var(--cream);
-  border: 3px solid var(--kraft);
+  border: 3px solid var(--ink);
   z-index: 2;
 }
 .tag-hole::after{
@@ -371,7 +371,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   left: 8px;
   width: 60px;
   height: 20px;
-  border: 2px solid var(--kraft);
+  border: 2px solid var(--ink);
   border-bottom: none;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
   opacity: .6;
@@ -558,21 +558,22 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 .tl-item p{ color: var(--ink-soft); font-size: 14.5px; margin: 0; }
 .tl-card{
   display: inline-block;
+  width: 100%;
+  max-width: 420px;
   background: var(--box-cream);
   border: none;
   border-radius: 0;
   padding: 14px 18px;
   box-shadow: none;
-  max-width: 420px;
 }
-.tl-item img{
+.tl-card img{
+  display: block;
   margin-top: 14px;
   border-radius: 0;
   box-shadow: 0 10px 24px -14px rgba(43,15,26,.4);
-  max-height: 55vh;
-  width: auto;
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  max-height: 380px;
   object-fit: cover;
 }
 
