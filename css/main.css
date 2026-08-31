@@ -693,11 +693,15 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
 }
 
 .empty-cart{
+  display: inline-block;
   text-align: center;
-  padding: 70px 20px;
-  color: var(--ink-soft);
+  padding: 50px 40px;
+  margin: 20px auto;
+  color: var(--ink);
+  background: var(--box-cream);
 }
 .empty-cart svg{ margin: 0 auto 16px; }
+#cart-body{ text-align: center; }
 
 /* ============================== CHECKOUT ============================== */
 .checkout-grid{
