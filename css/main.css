@@ -382,7 +382,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   aspect-ratio: 1 / 1;
   border-radius: 0;
   overflow: hidden;
-  background: var(--cream);
+  background: var(--box-cream);
   margin-bottom: 14px;
 }
 .tag-photo img{
@@ -862,7 +862,7 @@ h3{ font-size: clamp(23px, 3.4vw, 29px); }
   aspect-ratio: 1 / 1;
   border-radius: 0;
   overflow: hidden;
-  background: var(--white);
+  background: var(--box-cream);
   box-shadow: 0 20px 40px -22px rgba(43,15,26,.4);
   position: relative;
 }
