@@ -95,7 +95,8 @@ window.FF_PRODUCTS = [
     description: "Burgundy leather zip pouch with a strap of eight vintage watch faces.",
     image: "images/products/purse-006-burgundy-stand.jpg",
     gallery: ["images/products/purse-006-burgundy-worn-1.jpg", "images/products/purse-006-burgundy-worn-2.jpg", "images/products/purse-006-burgundy-worn-3.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/afPs3wZ3"
   },
   {
     id: "purse-007",
@@ -104,7 +105,8 @@ window.FF_PRODUCTS = [
     description: "Cognac croc-embossed tote with a strap of seven yellow, green rhinestone, and blue watch faces.",
     image: "images/products/purse-007-cognac-croc-stand.jpg",
     gallery: ["images/products/purse-007-cognac-croc-worn-1.jpg", "images/products/purse-007-cognac-croc-worn-2.jpg", "images/products/purse-007-cognac-croc-worn-3.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/74JXJe7V"
   },
   {
     id: "purse-008",
@@ -113,7 +115,8 @@ window.FF_PRODUCTS = [
     description: "Silver metallic croc-embossed bag with a strap of seven black, gray, and silver watch faces.",
     image: "images/products/purse-008-silver-croc-stand.jpg",
     gallery: ["images/products/purse-008-silver-croc-worn-1.jpg", "images/products/purse-008-silver-croc-worn-2.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/uu6cj4eV"
   },
   {
     id: "purse-009",
@@ -122,7 +125,8 @@ window.FF_PRODUCTS = [
     description: "Black leather bag finished with a strap of seven rhinestone watch faces and flower-shaped charms.",
     image: "images/products/purse-009-black-flower-stand.jpg",
     gallery: ["images/products/purse-009-black-flower-worn-1.jpg", "images/products/purse-009-black-flower-worn-2.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/pVHc8s2V"
   },
   {
     id: "purse-010",
@@ -131,7 +135,8 @@ window.FF_PRODUCTS = [
     description: "XOXO monogram shoulder bag with a strap of seven oval black watch faces.",
     image: "images/products/purse-010-xoxo-stand.jpg",
     gallery: ["images/products/purse-010-xoxo-worn-1.jpg", "images/products/purse-010-xoxo-worn-2.jpg", "images/products/purse-010-xoxo-worn-3.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/OwvEdRUY"
   },
   {
     id: "purse-011",
@@ -140,7 +145,8 @@ window.FF_PRODUCTS = [
     description: "Orange croc-embossed flap satchel with a strap of nine orange and white watch faces.",
     image: "images/products/purse-011-orange-croc-stand.jpg",
     gallery: ["images/products/purse-011-orange-croc-worn-1.jpg", "images/products/purse-011-orange-croc-worn-2.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/ffVKYafM"
   },
   {
     id: "purse-012",
@@ -149,7 +155,8 @@ window.FF_PRODUCTS = [
     description: "Black leather flap bag with a D-ring buckle, finished with a strap of nine black and white rhinestone watch faces.",
     image: "images/products/purse-012-black-buckle-stand.jpg",
     gallery: ["images/products/purse-012-black-buckle-worn-1.jpg", "images/products/purse-012-black-buckle-worn-2.jpg"],
-    inStock: true
+    inStock: true,
+    squareCheckoutUrl: "https://square.link/u/vBIr7S2g"
   },
   /* Add new purses here as you send me photos — copy the pattern
      from purse-001 through purse-005 above (id, name, price,
