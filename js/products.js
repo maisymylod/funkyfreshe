@@ -92,7 +92,7 @@ window.FF_PRODUCTS = [
     id: "purse-006",
     name: "Burgundy Watch Pouch",
     price: 85,
-    description: "Burgundy leather zip pouch with a strap of five vintage watch faces.",
+    description: "Burgundy leather zip pouch with a strap of eight vintage watch faces.",
     image: "images/products/purse-006-burgundy-stand.jpg",
     gallery: ["images/products/purse-006-burgundy-worn-1.jpg", "images/products/purse-006-burgundy-worn-2.jpg", "images/products/purse-006-burgundy-worn-3.jpg"],
     inStock: true
@@ -101,7 +101,7 @@ window.FF_PRODUCTS = [
     id: "purse-007",
     name: "Cognac Croc Tote",
     price: 80,
-    description: "Cognac croc-embossed tote with a strap of yellow, green rhinestone, and blue watch faces.",
+    description: "Cognac croc-embossed tote with a strap of seven yellow, green rhinestone, and blue watch faces.",
     image: "images/products/purse-007-cognac-croc-stand.jpg",
     gallery: ["images/products/purse-007-cognac-croc-worn-1.jpg", "images/products/purse-007-cognac-croc-worn-2.jpg", "images/products/purse-007-cognac-croc-worn-3.jpg"],
     inStock: true
@@ -110,7 +110,7 @@ window.FF_PRODUCTS = [
     id: "purse-008",
     name: "Silver Metallic Croc Bag",
     price: 90,
-    description: "Silver metallic croc-embossed bag with a strap of black, gray, and silver watch faces.",
+    description: "Silver metallic croc-embossed bag with a strap of seven black, gray, and silver watch faces.",
     image: "images/products/purse-008-silver-croc-stand.jpg",
     gallery: ["images/products/purse-008-silver-croc-worn-1.jpg", "images/products/purse-008-silver-croc-worn-2.jpg"],
     inStock: true
@@ -119,7 +119,7 @@ window.FF_PRODUCTS = [
     id: "purse-009",
     name: "Black Leather Flower-Charm Bag",
     price: 75,
-    description: "Black leather bag finished with a strap of rhinestone watch faces and flower-shaped charms.",
+    description: "Black leather bag finished with a strap of seven rhinestone watch faces and flower-shaped charms.",
     image: "images/products/purse-009-black-flower-stand.jpg",
     gallery: ["images/products/purse-009-black-flower-worn-1.jpg", "images/products/purse-009-black-flower-worn-2.jpg"],
     inStock: true
@@ -128,7 +128,7 @@ window.FF_PRODUCTS = [
     id: "purse-010",
     name: "XOXO Monogram Shoulder Bag",
     price: 80,
-    description: "XOXO monogram shoulder bag with a strap of blue oval and black watch faces.",
+    description: "XOXO monogram shoulder bag with a strap of seven oval black watch faces.",
     image: "images/products/purse-010-xoxo-stand.jpg",
     gallery: ["images/products/purse-010-xoxo-worn-1.jpg", "images/products/purse-010-xoxo-worn-2.jpg", "images/products/purse-010-xoxo-worn-3.jpg"],
     inStock: true
@@ -137,7 +137,7 @@ window.FF_PRODUCTS = [
     id: "purse-011",
     name: "Orange Croc Flap Satchel",
     price: 70,
-    description: "Orange croc-embossed flap satchel with a strap of orange and white watch faces.",
+    description: "Orange croc-embossed flap satchel with a strap of nine orange and white watch faces.",
     image: "images/products/purse-011-orange-croc-stand.jpg",
     gallery: ["images/products/purse-011-orange-croc-worn-1.jpg", "images/products/purse-011-orange-croc-worn-2.jpg"],
     inStock: true
@@ -146,7 +146,7 @@ window.FF_PRODUCTS = [
     id: "purse-012",
     name: "Black Leather Buckle-Flap Bag",
     price: 75,
-    description: "Black leather flap bag with a D-ring buckle, finished with a strap of black and white rhinestone watch faces.",
+    description: "Black leather flap bag with a D-ring buckle, finished with a strap of nine black and white rhinestone watch faces.",
     image: "images/products/purse-012-black-buckle-stand.jpg",
     gallery: ["images/products/purse-012-black-buckle-worn-1.jpg", "images/products/purse-012-black-buckle-worn-2.jpg"],
     inStock: true
